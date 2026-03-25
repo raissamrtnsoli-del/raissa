@@ -13,10 +13,13 @@
     :root {
       --azul-escuro: #043a49;
       --amarelo-claro: #f1eab9;
-      --marrom-dourado: #aa9465;
       --branco: #ffffff;
       --cinza-claro: #f9fafb;
       --preto-texto: #000000;
+      --whatsapp-verde: #25d366;
+      --instagram-gradient-start: #f09433;
+      --instagram-gradient-middle: #e6683c;
+      --instagram-gradient-end: #dc2743;
     }
 
     /* ===== RESET & GERAL ===== */
@@ -34,117 +37,156 @@
       line-height: 1.5;
       min-height: 100vh;
       padding-bottom: 90px; /* Espaço para a barra fixa inferior */
+      position: relative;
+    }
+
+    a {
+      text-decoration: none;
     }
 
     /* ===== MENU ===== */
     nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1100;
+      background: rgba(255 255 255 / 0.85);
+      backdrop-filter: saturate(180%) blur(12px);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
       display: flex;
       align-items: center;
-      gap: 40px;
-      padding: 20px 60px;
-      background: var(--amarelo-claro);
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1100;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+      justify-content: center;
+      padding: 10px 40px;
+      gap: 60px;
+      font-weight: 600;
+      font-size: 18px;
+      user-select: none;
     }
 
     nav .logo {
-      flex-shrink: 0;
+      position: absolute;
+      left: 40px;
       cursor: pointer;
+      height: 70px;
       display: flex;
       align-items: center;
-      height: 75px;
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
     }
 
     nav .logo img {
-      height: 75px;
+      height: 70px;
       display: block;
+      user-select: none;
+      pointer-events: none;
     }
 
-    .menu {
+    nav .menu {
       display: flex;
-      gap: 30px;
-      flex-wrap: wrap;
-      align-items: center;
+      gap: 50px;
+      justify-content: center;
       flex-grow: 1;
+      max-width: 600px;
+      margin: 0 auto;
     }
 
-    nav a {
+    nav .menu a {
       color: var(--azul-escuro);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 18px;
       transition: color 0.3s ease;
+      padding: 8px 0;
+      border-bottom: 3px solid transparent;
+      cursor: pointer;
     }
 
-    nav a:hover {
-      color: var(--marrom-dourado);
+    nav .menu a:hover,
+    nav .menu a:focus {
+      color: var(--amarelo-claro);
+      border-bottom: 3px solid var(--amarelo-claro);
+      outline: none;
     }
 
-    /* ===== HEADER ===== */
+    /* ===== HEADER (Página Inicial) ===== */
     header {
-      margin-top: 100px; /* Para compensar nav fixa */
+      margin-top: 100px; /* Compensar menu fixo */
       text-align: center;
-      padding: 100px 20px 80px;
+      padding: 120px 20px 100px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     header h1 {
-      font-size: 48px;
+      font-size: 56px;
       color: var(--azul-escuro);
-      margin-bottom: 15px;
+      margin-bottom: 20px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
     }
 
     header p {
-      font-size: 20px;
-      margin: 5px 0;
+      font-size: 22px;
+      margin: 10px 0;
+      font-weight: 500;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    /* Botão principal header removido daqui, vai para barra inferior */
+    /* ===== SEÇÕES COM FUNDO COLORIDO - FULL WIDTH ===== */
+    section.color-block {
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      padding-left: 60px;
+      padding-right: 60px;
+      box-sizing: border-box;
+    }
 
-    /* ===== SEÇÕES ===== */
-    section {
+    /* Ajuste interno do conteúdo para centralizar e limitar largura */
+    section.color-block > .inner-container {
       max-width: 1100px;
       margin: auto;
-      padding: 80px 20px;
-      transition: background 0.5s ease;
+      color: var(--amarelo-claro);
+      font-weight: 600;
+      font-size: 20px;
     }
 
+    /* Fundos alternados por seção (exceto contato) */
     section:nth-of-type(odd):not(#contato) {
       background: var(--branco);
+      color: var(--preto-texto);
     }
 
     section:nth-of-type(even):not(#contato) {
       background: var(--cinza-claro);
+      color: var(--preto-texto);
+      padding-left: 60px;
+      padding-right: 60px;
     }
 
-    /* A seção contato terá fundo azul escuro */
-    #contato {
-      background: var(--azul-escuro);
-      color: var(--amarelo-claro);
-      padding-bottom: 140px;
-    }
-
-    /* Títulos */
+    /* Títulos em azul escuro */
     h2 {
       font-size: 36px;
       color: var(--azul-escuro);
-      margin-bottom: 40px;
+      margin-bottom: 48px;
       font-weight: 700;
       text-align: center;
     }
 
-    #contato h2 {
-      color: var(--amarelo-claro);
-      margin-bottom: 60px;
+    /* ===== SEÇÃO SERVIÇOS ===== */
+    #servicos {
+      max-width: 1100px;
+      margin: 80px auto 80px;
+      padding: 0 20px;
     }
 
-    /* ===== CARDS SERVIÇOS ===== */
     .cards {
       display: flex;
       justify-content: center;
-      gap: 30px;
+      gap: 32px;
       flex-wrap: wrap;
     }
 
@@ -152,206 +194,255 @@
       background: var(--azul-escuro);
       color: var(--amarelo-claro);
       border-radius: 14px;
-      padding: 32px;
-      width: 300px;
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
-      font-weight: 500;
+      padding: 36px;
+      width: 320px;
+      box-shadow: 0 14px 28px rgba(4, 58, 73, 0.3);
+      font-weight: 600;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
     }
 
     .card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 20px 40px rgba(4, 58, 73, 0.45);
       cursor: default;
     }
 
     .card h3 {
-      font-size: 24px;
-      margin-bottom: 16px;
+      font-size: 26px;
+      margin-bottom: 18px;
       font-weight: 700;
     }
 
     /* ===== ESPECIALIDADES ===== */
+    #especialidades {
+      max-width: 1100px;
+      margin: 80px auto 80px;
+      padding: 0 20px;
+    }
+
     .lista {
       display: flex;
       justify-content: center;
-      gap: 80px;
+      gap: 90px;
       font-size: 20px;
-      font-weight: 500;
+      font-weight: 600;
+      color: var(--azul-escuro);
     }
 
     .coluna p {
-      margin: 10px 0;
+      margin: 14px 0;
+      user-select: none;
     }
 
     /* ===== HISTÓRIA ===== */
-    .historia {
+    #historia {
+      max-width: 1100px;
+      margin: 80px auto 80px;
+      padding: 0 20px;
+      position: relative;
+      color: var(--azul-escuro);
+      font-weight: 500;
+      font-size: 20px;
       display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 50px;
       flex-wrap: wrap;
-      max-width: 900px;
-      margin: 0 auto;
+      align-items: center;
+      gap: 48px;
+    }
+
+    /* Meio círculo azul atrás da imagem, "saindo" da extremidade esquerda */
+    #historia::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 320px;
+      height: 320px;
+      background: var(--azul-escuro);
+      border-radius: 50% 0 0 50%;
+      z-index: 1;
+    }
+
+    .historia-img-container {
+      position: relative;
+      width: 320px;
+      height: 320px;
+      border-radius: 50% 0 0 50%;
+      overflow: hidden;
+      box-shadow: 0 14px 28px rgba(4, 58, 73, 0.5);
+      z-index: 2;
+      flex-shrink: 0;
+      cursor: default;
+      user-select: none;
+    }
+
+    .historia-img-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50% 0 0 50%;
+      border: 5px solid var(--amarelo-claro);
+      box-shadow: 0 6px 20px rgba(241, 234, 185, 0.7);
+      pointer-events: none;
     }
 
     .historia-texto {
       flex: 1;
-      color: var(--azul-escuro);
-      font-size: 20px;
-      font-weight: 500;
-      text-align: left;
       min-width: 280px;
-      line-height: 1.5;
-    }
-
-    /* Imagem circular com círculo azul atrás para integrar */
-    .historia-img-container {
-      position: relative;
-      flex-shrink: 0;
-      width: 320px;
-      height: 320px;
-      border-radius: 50%;
-      background: var(--azul-escuro);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 14px 26px rgba(4, 58, 73, 0.5);
-      transition: transform 0.4s ease;
-      cursor: default;
-    }
-
-    .historia-img-container img {
-      width: 280px;
-      height: 280px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 5px solid var(--amarelo-claro);
-      box-shadow: 0 4px 14px rgba(241, 234, 185, 0.7);
-      transition: transform 0.3s ease;
-      user-select: none;
-      pointer-events: none;
-    }
-
-    .historia-img-container:hover {
-      transform: scale(1.05);
+      line-height: 1.6;
+      max-width: 620px;
     }
 
     /* ===== POR QUE ESCOLHER ===== */
     #porque {
       max-width: 650px;
-      margin: auto;
+      margin: 80px auto 80px;
       font-size: 20px;
       font-weight: 600;
       color: var(--azul-escuro);
       display: flex;
       flex-direction: column;
-      gap: 16px;
-      padding-bottom: 40px;
+      gap: 18px;
+      padding: 0 20px;
     }
 
     #porque p::before {
       content: "✔";
-      color: var(--marrom-dourado);
+      color: var(--amarelo-claro);
       margin-right: 10px;
       font-weight: 700;
     }
 
     /* ===== CONTATO ===== */
+    #contato {
+      background: var(--azul-escuro);
+      color: var(--amarelo-claro);
+      padding: 80px 60px 160px;
+      margin-top: 0;
+    }
+
+    #contato h2 {
+      color: var(--amarelo-claro);
+      margin-bottom: 60px;
+      font-weight: 700;
+      font-size: 38px;
+      text-align: center;
+    }
+
     .contato-container {
       display: flex;
       gap: 60px;
       justify-content: center;
-      flex-wrap: wrap;
-      max-width: 900px;
-      margin: 0 auto;
+      max-width: 1100px;
+      margin: auto;
+      flex-wrap: nowrap;
     }
 
     /* Form */
     .form-box {
       flex: 1;
-      min-width: 320px;
-      max-width: 450px;
+      min-width: 350px;
+      max-width: 470px;
     }
 
     form {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 24px;
     }
 
     form input,
     form textarea {
-      padding: 15px 18px;
+      padding: 16px 20px;
       font-size: 18px;
-      border-radius: 8px;
+      border-radius: 10px;
       border: none;
       font-family: 'Montserrat', sans-serif;
       resize: none;
+      font-weight: 600;
       transition: box-shadow 0.3s ease;
+      color: var(--azul-escuro);
+    }
+
+    form input::placeholder,
+    form textarea::placeholder {
+      color: #555;
+      font-weight: 500;
     }
 
     form input:focus,
     form textarea:focus {
       outline: none;
-      box-shadow: 0 0 10px var(--marrom-dourado);
+      box-shadow: 0 0 12px var(--amarelo-claro);
+      background: var(--branco);
     }
 
     form input {
-      height: 48px;
+      height: 50px;
     }
 
     form textarea {
-      min-height: 140px;
-      max-height: 160px;
+      min-height: 150px;
+      max-height: 180px;
+      background: var(--branco);
     }
 
     form button {
-      background: var(--marrom-dourado);
+      background: var(--amarelo-claro);
       border: none;
       color: var(--azul-escuro);
       font-weight: 700;
-      padding: 16px;
+      padding: 18px;
       font-size: 20px;
-      border-radius: 10px;
+      border-radius: 12px;
       cursor: pointer;
       transition: background 0.3s ease, transform 0.15s ease;
+      user-select: none;
     }
 
-    form button:hover {
-      background: var(--amarelo-claro);
+    form button:hover,
+    form button:focus {
+      background: #e6dca8;
       transform: translateY(-3px);
+      outline: none;
     }
 
     /* Contato info */
     .info-contato {
       flex: 1;
       min-width: 280px;
-      color: var(--amarelo-claro);
       font-size: 20px;
       font-weight: 600;
-      line-height: 1.6;
+      line-height: 1.7;
       display: flex;
       flex-direction: column;
-      gap: 24px;
+      gap: 28px;
+      color: var(--amarelo-claro);
+      user-select: none;
     }
 
-    .info-contato p strong {
+    .info-contato p {
+      margin: 0;
+    }
+
+    .info-contato strong {
       display: inline-block;
-      min-width: 110px;
-      color: var(--amarelo-claro);
+      min-width: 115px;
       font-weight: 700;
+      color: var(--amarelo-claro);
     }
 
     /* ===== FOOTER ===== */
     footer {
-      background: var(--amarelo-claro);
+      background: var(--azul-escuro);
       text-align: center;
-      padding: 14px 0;
+      padding: 12px 0;
       font-size: 14px;
       font-weight: 600;
-      color: var(--azul-escuro);
+      color: var(--amarelo-claro);
       user-select: none;
+      margin-top: 80px;
     }
 
     /* ===== BARRA INFERIOR FIXA ===== */
@@ -365,11 +456,12 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 14px 30px;
+      padding: 14px 40px;
       box-shadow: 0 -4px 10px rgba(4, 58, 73, 0.6);
       z-index: 1200;
       font-size: 18px;
       font-weight: 700;
+      user-select: none;
     }
 
     .barra-inferior a.telefone-link {
@@ -377,9 +469,11 @@
       text-decoration: none;
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
       font-weight: 700;
       font-size: 20px;
+      cursor: pointer;
+      user-select: none;
     }
 
     .barra-inferior a.telefone-link svg {
@@ -390,38 +484,115 @@
     }
 
     .barra-inferior .btn-contato {
-      background: var(--marrom-dourado);
-      padding: 14px 28px;
+      background: var(--amarelo-claro);
+      padding: 14px 32px;
       border-radius: 30px;
       font-weight: 700;
       font-size: 18px;
       color: var(--azul-escuro);
-      text-decoration: none;
-      transition: background 0.3s ease, transform 0.2s ease;
-      box-shadow: 0 4px 8px rgba(170, 148, 101, 0.4);
+      cursor: pointer;
       user-select: none;
+      transition: background 0.3s ease, transform 0.2s ease;
+      border: none;
+      text-align: center;
+      line-height: 1;
     }
 
-    .barra-inferior .btn-contato:hover {
-      background: var(--amarelo-claro);
+    .barra-inferior .btn-contato:hover,
+    .barra-inferior .btn-contato:focus {
+      background: #e6dca8;
       transform: translateY(-3px);
+      outline: none;
+    }
+
+    /* ===== BOTÕES FLUTUANTES WHATSAPP E INSTAGRAM ===== */
+    .botao-flutuante {
+      position: fixed;
+      bottom: 110px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 1300;
+    }
+
+    .botao-flutuante a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      color: white;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      user-select: none;
+      text-decoration: none;
+    }
+
+    .botao-flutuante a:hover,
+    .botao-flutuante a:focus {
+      transform: scale(1.1);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+      outline: none;
+    }
+
+    .botao-flutuante a.whatsapp {
+      background-color: var(--whatsapp-verde);
+    }
+
+    .botao-flutuante a.instagram {
+      background: linear-gradient(
+        45deg,
+        var(--instagram-gradient-start),
+        var(--instagram-gradient-middle),
+        var(--instagram-gradient-end)
+      );
+    }
+
+    /* Ícones SVG dentro dos botões */
+    .botao-flutuante svg {
+      width: 26px;
+      height: 26px;
+      pointer-events: none;
     }
 
     /* ===== RESPONSIVO ===== */
-    @media (max-width: 900px) {
+    @media (max-width: 980px) {
       nav {
-        flex-wrap: wrap;
+        padding: 10px 20px;
+        gap: 40px;
         justify-content: center;
       }
 
       nav .logo {
+        position: relative;
+        left: 0;
         margin-bottom: 10px;
+        height: 60px;
       }
 
-      .menu {
-        gap: 20px;
-        justify-content: center;
-        flex-grow: unset;
+      nav .logo img {
+        height: 60px;
+      }
+
+      nav .menu {
+        max-width: none;
+        gap: 30px;
+        flex-wrap: wrap;
+      }
+
+      header {
+        padding: 100px 20px 80px;
+      }
+
+      header h1 {
+        font-size: 42px;
+      }
+
+      header p {
+        font-size: 18px;
       }
 
       .cards {
@@ -432,44 +603,64 @@
       .lista {
         flex-direction: column;
         align-items: center;
-        gap: 25px;
+        gap: 30px;
+        font-size: 18px;
       }
 
-      .historia {
+      #historia {
         flex-direction: column;
+        align-items: center;
+        padding: 0 20px;
+        margin: 60px auto 80px;
+      }
+
+      #historia::before {
+        display: none;
       }
 
       .historia-img-container {
-        width: 280px;
-        height: 280px;
+        width: 240px;
+        height: 240px;
+        border-radius: 20px;
       }
 
       .historia-img-container img {
-        width: 240px;
-        height: 240px;
+        border-radius: 20px;
+        border: 4px solid var(--amarelo-claro);
+        box-shadow: 0 6px 16px rgba(241, 234, 185, 0.6);
+      }
+
+      .historia-texto {
+        max-width: 100%;
+        font-size: 18px;
+        line-height: 1.5;
+      }
+
+      #porque {
+        max-width: 100%;
+        font-size: 18px;
+        padding: 0 20px;
       }
 
       .contato-container {
         flex-direction: column;
-        align-items: center;
+        padding: 0 20px;
+      }
+
+      .form-box {
+        max-width: 100%;
+        width: 100%;
       }
 
       .info-contato {
-        align-items: center;
-        text-align: center;
-      }
-
-      form input,
-      form textarea,
-      form button {
-        font-size: 16px;
+        width: 100%;
+        padding-top: 40px;
+        font-size: 18px;
       }
 
       .barra-inferior {
-        flex-direction: column;
-        gap: 14px;
+        padding: 14px 20px;
         font-size: 16px;
-        padding: 12px 20px;
       }
 
       .barra-inferior a.telefone-link {
@@ -477,100 +668,158 @@
       }
 
       .barra-inferior .btn-contato {
+        padding: 12px 28px;
         font-size: 16px;
-        padding: 12px 24px;
-        width: 100%;
-        text-align: center;
       }
     }
   </style>
 </head>
 
 <body>
-
   <nav>
-    <a href="#inicio" class="logo" aria-label="Página inicial Jb Contabilidade">
+    <a href="#top" class="logo" aria-label="Jb Contabilidade logo">
       <img src="logo.png" alt="Logo Jb Contabilidade" />
     </a>
-    <div class="menu">
-      <a href="#inicio">Início</a>
-      <a href="#servicos">Serviços</a>
-      <a href="#especialidades">Especialidades</a>
-      <a href="#historia">História</a>
-      <a href="#porque">Por que a Jb?</a>
-      <a href="#contato">Contato</a>
+    <div class="menu" role="menubar" aria-label="Menu principal">
+      <a href="#servicos" role="menuitem" tabindex="0">Serviços</a>
+      <a href="#especialidades" role="menuitem" tabindex="0">Especialidades</a>
+      <a href="#historia" role="menuitem" tabindex="0">Nossa História</a>
+      <a href="#porque" role="menuitem" tabindex="0">Por Que Escolher</a>
+      <a href="#contato" role="menuitem" tabindex="0">Contato</a>
     </div>
   </nav>
 
-  <header id="inicio">
+  <header id="top" tabindex="-1">
     <h1>Jb Contabilidade</h1>
-    <p>Assessoria completa e 100% online</p>
-    <p>Araxá - MG | Atendimento em todo o Brasil</p>
+    <p>Seu parceiro confiável para soluções contábeis precisas e eficientes.</p>
+    <p>Contabilidade especializada para transformar seu negócio.</p>
   </header>
 
-  <section id="servicos" aria-label="Nossos serviços">
-    <h2>Nossos Serviços</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>Fiscal</h3>
-        <p>Apuração de impostos e planejamento tributário.</p>
-      </div>
-      <div class="card">
-        <h3>Contábil</h3>
-        <p>Controle financeiro e relatórios completos.</p>
-      </div>
-      <div class="card">
-        <h3>Departamento Pessoal</h3>
-        <p>Gestão completa de colaboradores.</p>
-      </div>
+  <section id="servicos">
+    <h2>Serviços</h2>
+    <div class="cards" role="list">
+      <article class="card" role="listitem" tabindex="0" aria-label="Serviço de contabilidade fiscal">
+        <h3>Contabilidade Fiscal</h3>
+        <p>Gestão de tributos e obrigações fiscais com total transparência.</p>
+      </article>
+      <article class="card" role="listitem" tabindex="0" aria-label="Serviço de contabilidade financeira">
+        <h3>Contabilidade Financeira</h3>
+        <p>Controle financeiro para tomada de decisões estratégicas.</p>
+      </article>
+      <article class="card" role="listitem" tabindex="0" aria-label="Consultoria contábil">
+        <h3>Consultoria</h3>
+        <p>Assessoria especializada para crescimento sustentável.</p>
+      </article>
     </div>
   </section>
 
-  <section id="especialidades" aria-label="Nossas especialidades">
-    <h2>Nossas especialidades</h2>
+  <section id="especialidades">
+    <h2>Especialidades</h2>
     <div class="lista">
-      <div class="coluna">
-        <p>✔ IRPF</p>
-        <p>✔ MEI</p>
-        <p>✔ Simples Nacional</p>
+      <div class="coluna" aria-label="Especialidades coluna 1">
+        <p>Folha de Pagamento</p>
+        <p>Impostos Diretos</p>
+        <p>Impostos Indiretos</p>
       </div>
-      <div class="coluna">
-        <p>✔ Lucro Presumido</p>
-        <p>✔ Produtores Rurais</p>
-        <p>✔ Assessoria completa</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="historia" aria-label="Nossa história">
-    <h2>Nossa História</h2>
-    <div class="historia">
-      <div class="historia-img-container">
-        <img src="meninasjb.jpg" alt="Equipe Jb Contabilidade" />
-      </div>
-      <div class="historia-texto">
-        <p>A Jb Contabilidade nasceu após três profissionais: Josiane, Beatriz e Jéssica que perceberam a necessidade de um atendimento mais humano e próximo em 2023.</p>
-        <p>Hoje oferecemos soluções completas com foco no crescimento de cada cliente.</p>
+      <div class="coluna" aria-label="Especialidades coluna 2">
+        <p>Controles Patrimoniais</p>
+        <p>Auditorias Internas</p>
+        <p>Planejamento Tributário</p>
       </div>
     </div>
   </section>
 
-  <section id="porque" aria-label="Por que escolher a Jb?">
-    <h2>Por que escolher a Jb?</h2>
-    <div>
-      <p>Atendimento humanizado e próximo</p>
-      <p>Agilidade nas respostas</p>
-      <p>Equipe qualificada</p>
-      <p>Segurança nos processos</p>
-      <p>Foco total no crescimento do cliente</p>
+  <section id="historia">
+    <div class="historia-img-container" aria-label="Foto da equipe Jb Contabilidade">
+      <img src="historia.jpg" alt="Equipe Jb Contabilidade sorrindo" />
+    </div>
+    <div class="historia-texto">
+      <h2>Nossa História</h2>
+      <p>Fundada em 2005, a Jb Contabilidade vem prestando serviços contábeis de alta qualidade para empresas de
+        diversos setores.</p>
+      <p>Nosso compromisso é com a excelência e a transparência, garantindo o sucesso dos nossos clientes.</p>
     </div>
   </section>
 
-  <section id="contato" aria-label="Contato e formulário">
-    <h2>Fale conosco</h2>
+  <section id="porque">
+    <h2>Por Que Escolher a Jb Contabilidade?</h2>
+    <p>Equipe altamente qualificada</p>
+    <p>Atendimento personalizado</p>
+    <p>Atualização constante em legislação</p>
+    <p>Foco na satisfação do cliente</p>
+  </section>
+
+  <section id="contato">
+    <h2>Contato</h2>
     <div class="contato-container">
       <div class="form-box">
-        <form action="https://formsubmit.co/jbcontabilidade23@gmail.com" method="POST">
-          <input type="text" name="nome" placeholder="Seu nome" required />
-          <input type="email" name="email" placeholder="Seu email" required />
-          <textarea name="mensagem" placeholder="Escreva sua
+        <form action="#" method="POST" aria-label="Formulário de contato">
+          <input type="text" name="nome" placeholder="Nome" required aria-required="true" />
+          <input type="email" name="email" placeholder="Email" required aria-required="true" />
+          <textarea name="mensagem" placeholder="Mensagem" required aria-required="true"></textarea>
+          <button type="submit">Enviar</button>
+        </form>
+      </div>
+      <div class="info-contato" aria-label="Informações de contato">
+        <p><strong>Telefone:</strong> (11) 99999-9999</p>
+        <p><strong>Email:</strong> contato@jbcontabilidade.com.br</p>
+        <p><strong>Endereço:</strong> Rua das Contas, 123 - São Paulo, SP</p>
+      </div>
+    </div>
+  </section>
+
+  <footer role="contentinfo">
+    © 2026 Jb Contabilidade
+  </footer>
+
+  <div class="botao-flutuante" aria-label="Botões flutuantes de redes sociais">
+    <a
+      href="https://wa.me/5511999999999"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="WhatsApp"
+      class="whatsapp"
+      title="WhatsApp"
+    >
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+        <path
+          fill="currentColor"
+          d="M20.52 3.48A11.943 11.943 0 0012 0C5.373 0 0 5.372 0 12a11.958 11.958 0 001.613 6.044L0 24l5.962-1.584A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12 0-3.197-1.24-6.197-3.48-8.52zm-7.145 17.326a9.42 9.42 0 01-5.076-1.544l-.365-.217-3.537.941.946-3.451-.237-.374a9.484 9.484 0 011.43-11.94 9.39 9.39 0 0113.231 1.563 9.376 9.376 0 01-6.389 14.02z"
+        />
+        <path
+          fill="currentColor"
+          d="M17.363 14.348c-.273-.137-1.615-.8-1.865-.891-.25-.093-.433-.137-.615.138-.182.273-.7.89-.857 1.074-.157.182-.315.205-.588.068-.273-.137-1.152-.424-2.196-1.356-.812-.723-1.36-1.616-1.52-1.889-.157-.273-.017-.42.12-.557.123-.123.273-.315.41-.473.137-.157.182-.273.273-.455.093-.182.045-.34-.022-.476-.068-.137-.615-1.48-.84-2.025-.22-.53-.444-.46-.615-.47l-.526-.009c-.182 0-.476.068-.726.34-.25.273-.95.928-.95 2.26 0 1.33.974 2.618 1.11 2.8.137.182 1.918 2.93 4.64 4.106.65.28 1.157.446 1.553.57.65.206 1.24.177 1.708.107.52-.078 1.615-.658 1.843-1.292.228-.635.228-1.18.16-1.292-.068-.114-.25-.182-.523-.32z"
+        />
+      </svg>
+    </a>
+    <a
+      href="https://www.instagram.com/jbcontabilidade"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Instagram"
+      class="instagram"
+      title="Instagram"
+    >
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+        <path
+          fill="currentColor"
+          d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 2A3.75 3.75 0 004 7.75v8.5A3.75 3.75 0 007.75 20h8.5A3.75 3.75 0 0020 16.25v-8.5A3.75 3.75 0 0016.25 4h-8.5zm8.625 2.125a.875.875 0 11-1.75 0 .875.875 0 011.75 0zM12 7a5 5 0 110 10 5 5 0 010-10zm0 2a3 3 0 100 6 3 3 0 000-6z"
+        />
+      </svg>
+    </a>
+  </div>
+
+  <div class="barra-inferior" role="complementary" aria-label="Contato rápido">
+    <a href="tel:+5511999999999" class="telefone-link" aria-label="Ligar para Jb Contabilidade">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="currentColor">
+        <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21c1.21.49 2.53.76 3.88.76a1 1 0 011 1v3.5a1 1 0 01-1 1A17 17 0 013 6a1 1 0 011-1h3.5a1 1 0 011 1c0 1.35.27 2.67.76 3.88a1 1 0 01-.21 1.11l-2.43 2.4z" />
+      </svg>
+      (11) 99999-9999
+    </a>
+    <button class="btn-contato" onclick="document.getElementById('contato').scrollIntoView({ behavior: 'smooth' });" aria-label="Abrir formulário de contato">
+      Contato
+    </button>
+  </div>
+</body>
+
+</html>
