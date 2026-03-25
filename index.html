@@ -8,23 +8,38 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
+
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: #f4f6f8;
+  background: #e6f0f2;
   color: #1f2937;
 }
 
+/* TOPO COM LOGO COMO FUNDO */
 header {
-  background: linear-gradient(135deg, #0f172a, #1e3a8a);
+  background: url('logo.png') no-repeat center center;
+  background-size: cover;
+  background-color: #043a49;
   color: white;
   text-align: center;
-  padding: 80px 20px;
+  padding: 120px 20px;
+  position: relative;
 }
 
-header img {
-  width: 120px;
-  margin-bottom: 15px;
+/* CAMADA ESCURA PARA LEGIBILIDADE */
+header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(4, 58, 73, 0.75);
+}
+
+header * {
+  position: relative;
 }
 
 header h1 {
@@ -37,11 +52,12 @@ header p {
   margin-top: 10px;
 }
 
+/* BOTÃO */
 .btn {
   display: inline-block;
   margin-top: 25px;
   padding: 15px 28px;
-  background: #22c55e;
+  background: #043a49;
   color: white;
   text-decoration: none;
   border-radius: 8px;
@@ -50,9 +66,10 @@ header p {
 }
 
 .btn:hover {
-  background: #16a34a;
+  background: #032c38;
 }
 
+/* SEÇÕES */
 section {
   padding: 60px 20px;
   max-width: 1100px;
@@ -64,7 +81,7 @@ section:nth-child(even) {
 }
 
 section:nth-child(odd) {
-  background: #f1f5f9;
+  background: #e6f0f2;
 }
 
 h2 {
@@ -72,6 +89,7 @@ h2 {
   margin-bottom: 40px;
 }
 
+/* CARDS */
 .cards {
   display: flex;
   gap: 20px;
@@ -87,25 +105,23 @@ h2 {
   box-shadow: 0 8px 20px rgba(0,0,0,0.08);
 }
 
+/* RODAPÉ */
 footer {
-  background: #0f172a;
+  background: #043a49;
   color: white;
   text-align: center;
   padding: 25px;
 }
+
 </style>
 </head>
 
 <body>
 
 <header>
-  <!-- COLOQUE SUA LOGO AQUI -->
-  <img src="logo.png" alt="JB Contabilidade">
-
   <h1>JB Contabilidade</h1>
   <p>Atendimento humanizado, sem burocracia e 100% online</p>
   <p>Araxá - MG | Atendimento em todo o Brasil</p>
-
   <a class="btn" href="https://wa.me/5534988374643">Falar no WhatsApp</a>
 </header>
 
@@ -147,9 +163,8 @@ footer {
     trazendo mais proximidade, eficiência e humanidade para os clientes.
   </p>
   <p>
-    Fundada por profissionais experientes, com atuação nas áreas fiscal, contábil
-    e departamento pessoal, a empresa surgiu para suprir uma carência do mercado:
-    um atendimento realmente diferenciado.
+    Fundada por profissionais experientes nas áreas fiscal, contábil e departamento pessoal,
+    a empresa surgiu para oferecer um atendimento realmente diferenciado.
   </p>
   <p>
     Desde 2023, seguimos crescendo e ajudando empresas a se organizarem e crescerem com segurança.
