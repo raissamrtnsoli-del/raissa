@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JB Contabilidade</title>
+<title>Jb Contabilidade</title>
 
 <!-- FONTES -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
@@ -15,23 +15,19 @@ body {
   font-family: 'Poppins', sans-serif;
   background: #043a49;
   color: white;
+  scroll-behavior: smooth;
 }
 
-/* TÍTULOS GRANDES */
-h1, h2, h3 {
-  font-family: 'Playfair Display', serif;
+/* ANIMAÇÃO */
+.hidden {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s ease;
 }
 
-h1 {
-  font-size: 3em;
-}
-
-h2 {
-  font-size: 2.2em;
-}
-
-p {
-  font-size: 1.1em;
+.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* HEADER */
@@ -57,6 +53,16 @@ header * {
   position: relative;
 }
 
+header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3em;
+  margin: 0;
+}
+
+header p {
+  font-size: 1.2em;
+}
+
 /* BOTÃO */
 .btn {
   display: inline-block;
@@ -67,20 +73,37 @@ header * {
   border-radius: 10px;
   font-weight: bold;
   text-decoration: none;
-  font-size: 1.1em;
 }
 
-.btn img {
-  width: 20px;
-  margin-right: 8px;
-  vertical-align: middle;
+.btn:hover {
+  background: #e5e5e5;
+}
+
+/* WHATSAPP FLUTUANTE */
+.whatsapp {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25d366;
+  padding: 15px;
+  border-radius: 50%;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.whatsapp img {
+  width: 30px;
 }
 
 /* SEÇÕES */
 section {
   padding: 70px 20px;
-  max-width: 900px;
+  max-width: 1000px;
   margin: auto;
+}
+
+h2 {
+  text-align: center;
+  font-size: 2em;
 }
 
 /* CARDS */
@@ -112,7 +135,6 @@ form input, form textarea {
   margin: 10px 0;
   border-radius: 8px;
   border: none;
-  font-size: 1em;
 }
 
 form button {
@@ -123,7 +145,6 @@ form button {
   border: none;
   border-radius: 10px;
   font-weight: bold;
-  font-size: 1.1em;
   cursor: pointer;
 }
 
@@ -132,12 +153,7 @@ form button {
   text-align: center;
 }
 
-.contato img {
-  width: 20px;
-  margin-right: 8px;
-}
-
-/* FOOTER */
+/* RODAPÉ */
 footer {
   background: #032c38;
   padding: 25px;
@@ -149,18 +165,17 @@ footer {
 
 <body>
 
-<header>
+<!-- HEADER -->
+<header class="hidden">
   <h1>JB Contabilidade</h1>
-  <p>Atendimento humanizado, sem burocracia e 100% online</p>
+  <p>Atendimento humanizado e 100% online</p>
   <p>Araxá - MG | Atendimento em todo o Brasil</p>
 
-  <a class="btn" href="https://wa.me/5534988374643">
-    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
-    Falar no WhatsApp
-  </a>
+  <a class="btn" href="https://wa.me/5534988374643">Falar no WhatsApp</a>
 </header>
 
-<section>
+<!-- SERVIÇOS -->
+<section class="hidden">
   <h2>🚀 Nossos Serviços</h2>
   <div class="cards">
     <div class="card">
@@ -178,41 +193,66 @@ footer {
   </div>
 </section>
 
-<section>
-  <h2>📝 Solicitar Orçamento</h2>
+<!-- HISTÓRIA -->
+<section class="hidden">
+  <h2>💡 Nossa História</h2>
+  <p>
+    A Jb Contabilidade nasceu após três profissionais que perceberem a necessidade
+    de um atendimento mais humano e próximo, mesmo que online. Tendo como prioridade 
+    acompanhar e impulsionar a evolução de cada cliente.
+  </p>
+  <p>
+    Nossa empresa é composta por Josiane no setor fiscal, Beatriz no contábil e Jessica 
+    que integrou o departamento pessoal, formando uma equipe completa.
+  </p>
+  <p>
+    Desde 2023, a empresa vem crescendo e ajudando clientes com eficiência e dedicação.
+  </p>
+</section>
+
+<!-- FORMULÁRIO -->
+<section class="hidden">
+  <h2>📝 Envie suas dúvidas, vamos conversar e encontrar a melhor solução para o seu negócio.</h2>
 
   <form action="https://formsubmit.co/jbcontabilidade23@gmail.com" method="POST">
-
     <input type="text" name="nome" placeholder="Seu nome" required>
     <input type="email" name="email" placeholder="Seu email" required>
-    <input type="tel" name="telefone" placeholder="Seu telefone">
-
-    <textarea name="mensagem" placeholder="Conte sua necessidade (abertura, imposto, regularização...)" required></textarea>
-
-    <button type="submit">Enviar Solicitação</button>
-
+    <textarea name="mensagem" placeholder="Descreva sua necessidade..." required></textarea>
+    <button type="submit">Enviar</button>
   </form>
 </section>
 
-<section class="contato">
-  <h2>📞 Contato</h2>
-
-  <p>
-    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
-    WhatsApp: (34) 98837-4643
-  </p>
-
-  <p>📧 jbcontabilidade23@gmail.com</p>
-
-  <p>
-    <img src="https://cdn-icons-png.flaticon.com/512/733/733558.png">
-    @jbassessoria_contabil
-  </p>
+<!-- CONTATO -->
+<section class="contato hidden">
+  <h2> Contato</h2>
+  <p>WhatsApp: (34) 98837-4643</p>
+  <p>Email: jbcontabilidade23@gmail.com</p>
+  <p>Instagram: @jbassessoria_contabil</p>
 </section>
 
 <footer>
   <p>© 2026 JB Contabilidade</p>
 </footer>
+
+<!-- BOTÃO FLUTUANTE -->
+<a class="whatsapp" href="https://wa.me/5534988374643">
+  <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
+</a>
+
+<!-- SCRIPT ANIMAÇÃO -->
+<script>
+const elements = document.querySelectorAll('.hidden');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+    }
+  });
+});
+
+elements.forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
