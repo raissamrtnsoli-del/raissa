@@ -5,23 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jb Contabilidade</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Cormorant+Garamond:wght@300;500&display=swap" rel="stylesheet">
 
 <style>
-  .jb {
-  font-size: 1.3em;
-  font-family: 'Playfair Display', serif;
+
+/* TIPOGRAFIA */
+.jb {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  letter-spacing: 1px;
 }
+
 .contabilidade {
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
 }
-header h1 {
-  font-size: 4em;
-  font-weight: 700;
-  letter-spacing: 1px;
-  margin-bottom: 10px; /* evita ficar colado no texto abaixo */
-}
+
 html {
   scroll-behavior: smooth;
 }
@@ -35,22 +34,44 @@ body {
   padding-top: 70px;
 }
 
-/* MENU */
+/* MENU SOFISTICADO */
 nav {
   position: fixed;
   top: 0;
   width: 100%;
-  background: rgba(3,44,56,0.95);
-  backdrop-filter: blur(10px);
-  padding: 25px 0;
+  background: rgba(3,44,56,0.85);
+  backdrop-filter: blur(12px);
+  padding: 18px 0;
   z-index: 1000;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
 nav a {
   color: white;
-  margin: 0 17px;
+  margin: 0 18px;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 500;
+  position: relative;
+  transition: 0.3s;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: white;
+  left: 0;
+  bottom: -5px;
+  transition: 0.3s;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+nav a:hover {
+  opacity: 0.8;
 }
 
 /* HEADER */
@@ -78,14 +99,7 @@ header * {
 header h1 {
   font-size: 3.8em;
   font-weight: 700;
-}
-
-.jb {
-  font-family: 'Playfair Display', serif;
-}
-
-.contabilidade {
-  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 2px;
 }
 
 header p {
@@ -131,18 +145,17 @@ section:nth-child(even) {
   border-radius: 10px;
 }
 
-/* TÍTULOS PADRÃO */
+/* TÍTULOS */
 h2 {
   font-size: 2em;
   margin-bottom: 45px;
   padding-bottom: 10px;
   border-bottom: 3px solid rgba(255,255,255,0.3);
-  
-  display: block; /* MUITO IMPORTANTE */
-  width: 100%;     /* FAZ A LINHA IR ATÉ O FINAL */
+  display: block;
+  width: 100%;
   text-align: center;
 }
-/* AJUSTES ESPECÍFICOS 👇 */
+
 .historia h2 {
   margin-bottom: 15px;
 }
@@ -194,19 +207,12 @@ p {
   transition: 0.3s;
 }
 
-/* EFEITO AO PASSAR O MOUSE */
 .coluna p:hover {
   background: rgba(255,255,255,0.12);
   transform: translateX(5px);
 }
 
 /* HISTÓRIA */
-#historia h2 {
-  text-align: center;
-  display: block;
-  margin-bottom: 40px; /* espaço abaixo do título */
-}
-
 .historia {
   display: flex;
   align-items: center;
@@ -224,10 +230,10 @@ p {
 }
 
 .historia-texto p {
-  margin: 8px 0; /* diminui espaço entre parágrafos */
+  margin: 8px 0;
 }
 
-/* POR QUE ESCOLHER */
+/* PORQUE */
 .porque {
   text-align: left;
   max-width: 600px;
@@ -238,11 +244,13 @@ p {
   margin: 10px 0;
 }
 
-/* FORMULÁRIO */
+/* FORMULÁRIO CENTRALIZADO */
 form {
   background: rgba(255,255,255,0.05);
   padding: 30px;
   border-radius: 15px;
+  max-width: 600px;
+  margin: auto;
 }
 
 form input,
@@ -258,7 +266,6 @@ form textarea {
   font-style: italic;
 }
 
-/* BOTÃO */
 form button {
   width: 50%;
   padding: 16px;
@@ -271,16 +278,19 @@ form button {
   margin: 20px auto 0;
 }
 
-/* FOOTER */
+/* FOOTER MENOR */
 footer {
   background: #032c38;
   padding: 25px;
 }
- @media (max-width: 768px) {
 
-  body {
-    text-align: center;
-  }
+footer p {
+  font-size: 0.85em;
+  opacity: 0.8;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
 
   header h1 {
     font-size: 2.2em;
@@ -307,7 +317,7 @@ footer {
   .coluna {
     text-align: center;
   }
-}
+
   .porque {
     text-align: center;
   }
@@ -343,9 +353,9 @@ footer {
 
 <header id="inicio">
   <h1>
-  <span class="jb">Jb</span> 
-  <span class="contabilidade">Contabilidade</span>
-</h1>
+    <span class="jb">Jb</span> 
+    <span class="contabilidade">Contabilidade</span>
+  </h1>
 </header>
 
 <section id="servicos">
@@ -359,29 +369,24 @@ footer {
 
 <section id="especialidades">
   <h2>Nossas especialidades</h2>
- <div class="lista">
-
-  <div class="coluna">
-    <p>✔ IRPF</p>
-    <p>✔ MEI</p>
-    <p>✔ Simples Nacional</p>
+  <div class="lista">
+    <div class="coluna">
+      <p>✔ IRPF</p>
+      <p>✔ MEI</p>
+      <p>✔ Simples Nacional</p>
+    </div>
+    <div class="coluna">
+      <p>✔ Lucro Presumido</p>
+      <p>✔ Produtores Rurais</p>
+      <p>✔ Assessoria completa</p>
+    </div>
   </div>
-
-  <div class="coluna">
-    <p>✔ Lucro Presumido</p>
-    <p>✔ Produtores Rurais</p>
-    <p>✔ Assessoria completa</p>
-  </div>
-
-</div>
 </section>
 
 <section id="historia">
   <h2>Nossa História</h2>
-
   <div class="historia">
     <img src="meninasjb.jpg">
-
     <div class="historia-texto">
       <p>A Jb Contabilidade nasceu após três profissionais: Josiane, Beatriz e Jéssica que perceberam a necessidade de um atendimento mais humano e próximo em 2023.</p>
       <p>Hoje oferecemos soluções completas com foco no crescimento de cada cliente.</p>
@@ -427,6 +432,7 @@ footer {
 
 <a class="instagram" href="https://instagram.com/jbassessoria_contabil">
   <img src="https://cdn-icons-png.flaticon.com/512/733/733558.png">
+</a>
 
 </body>
 </html>
