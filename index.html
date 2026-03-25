@@ -27,8 +27,9 @@ nav {
   position: fixed;
   top: 0;
   width: 100%;
-  background: #032c38;
-  padding: 17px;
+  background: rgba(3,44,56,0.95);
+  backdrop-filter: blur(10px);
+  padding: 25px 0;
   z-index: 1000;
 }
 
@@ -157,13 +158,21 @@ p {
 
 .lista li {
   margin: 8px 0;
+  font-size: 1.22em;
+  font-weight: 500;
 }
 
 /* HISTÓRIA */
+#historia h2 {
+  text-align: center;
+  display: block;
+}
+
 .historia {
   display: flex;
-  gap: 30px;
+  gap: 40px;
   align-items: center;
+  margin-top: 30px;
   text-align: left;
 }
 
@@ -225,6 +234,52 @@ footer {
   background: #032c38;
   padding: 25px;
 }
+ @media (max-width: 768px) {
+
+  body {
+    text-align: center;
+  }
+
+  header h1 {
+    font-size: 2.2em;
+  }
+
+  header p {
+    font-size: 1.2em;
+  }
+
+  nav a {
+    display: block;
+    margin: 10px 0;
+  }
+
+  .cards {
+    flex-direction: column;
+  }
+
+  .lista {
+    columns: 1;
+    text-align: center;
+  }
+
+  .porque {
+    text-align: center;
+  }
+
+  form button {
+    width: 100%;
+  }
+
+  .historia {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .historia img {
+    width: 100%;
+    max-width: 300px;
+  }
+}
 
 </style>
 </head>
@@ -268,13 +323,19 @@ footer {
   </ul>
 </section>
 
-<section id="historia" class="historia">
-  <img src="meninasjb.jpg">
-  <div class="historia-texto">
-    <h2>Nossa História</h2>
-    <p>A Jb Contabilidade nasceu após três profissionais: Josiane, Beatriz e Jéssica que perceberam a necessidade de um atendimento mais humano e próximo em 2023.</p>
-    <p>Hoje oferecemos soluções completas com foco no crescimento de cada cliente.</p>
+<section id="historia">
+
+  <h2>Nossa História</h2>
+
+  <div class="historia">
+    <img src="meninasjb.jpg">
+
+    <div class="historia-texto">
+      <p>A Jb Contabilidade nasceu após três profissionais: Josiane, Beatriz e Jéssica que perceberam a necessidade de um atendimento mais humano e próximo em 2023.</p>
+      <p>Hoje oferecemos soluções completas com foco no crescimento de cada cliente.</p>
+    </div>
   </div>
+
 </section>
 
 <section id="porque">
