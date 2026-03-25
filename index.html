@@ -39,11 +39,11 @@ nav a {
   font-weight: 600;
 }
 
-/* HEADER (APENAS FUNDO COM LOGO) */
+/* HEADER */
 header {
   background: url('logo.png') no-repeat center;
   background-size: cover;
-  padding: 200px 20px;
+  padding: 220px 20px;
   position: relative;
 }
 
@@ -61,9 +61,15 @@ header * {
   position: relative;
 }
 
+/* TÍTULO PRINCIPAL MAIOR */
 header h1 {
-  font-size: 2.8em;
+  font-size: 3.8em;
   font-weight: 700;
+}
+
+/* TEXTO TOPO MAIOR */
+header p {
+  font-size: 1.2em;
 }
 
 /* BOTÃO */
@@ -93,7 +99,7 @@ header h1 {
   width: 28px;
 }
 
-/* SEÇÕES DIFERENCIADAS */
+/* SEÇÕES */
 section {
   padding: 80px 20px;
   max-width: 1000px;
@@ -105,7 +111,7 @@ section:nth-child(even) {
   border-radius: 10px;
 }
 
-/* TÍTULOS MAIS PROFISSIONAIS */
+/* TÍTULOS */
 h2 {
   font-size: 2em;
   margin-bottom: 25px;
@@ -134,7 +140,19 @@ p {
   min-width: 250px;
 }
 
-/* HISTÓRIA COM IMAGEM LADO A LADO */
+/* ESPECIALIDADES EM COLUNAS */
+.lista {
+  columns: 2;
+  text-align: left;
+  max-width: 600px;
+  margin: auto;
+}
+
+.lista li {
+  margin: 8px 0;
+}
+
+/* HISTÓRIA */
 .historia {
   display: flex;
   gap: 30px;
@@ -151,7 +169,18 @@ p {
   flex: 1;
 }
 
-/* FORMULÁRIO PADRONIZADO */
+/* POR QUE ESCOLHER - ALINHADO À ESQUERDA */
+.porque {
+  text-align: left;
+  max-width: 600px;
+  margin: auto;
+}
+
+.porque p {
+  margin: 10px 0;
+}
+
+/* FORMULÁRIO */
 form {
   background: rgba(255,255,255,0.05);
   padding: 30px;
@@ -165,27 +194,23 @@ form textarea {
   margin: 12px 0;
   border-radius: 8px;
   border: none;
-
   font-family: 'Montserrat', sans-serif;
   font-size: 1em;
   color: #043a49;
   font-style: italic;
 }
 
-form input::placeholder,
-form textarea::placeholder {
-  font-style: italic;
-  opacity: 0.7;
-}
-
+/* BOTÃO CENTRALIZADO */
 form button {
-  width: 100%;
+  width: 50%;
   padding: 16px;
   background: white;
   color: #043a49;
   border: none;
   border-radius: 10px;
   font-weight: 600;
+  display: block;
+  margin: 20px auto 0;
 }
 
 /* FOOTER */
@@ -204,6 +229,7 @@ footer {
   <a href="#servicos">Serviços</a>
   <a href="#especialidades">Especialidades</a>
   <a href="#historia">História</a>
+  <a href="#porque">Por que a Jb?</a>
   <a href="#contato">Contato</a>
 </nav>
 
@@ -211,7 +237,7 @@ footer {
   <h1>Jb Contabilidade</h1>
   <p>Assessoria completa e 100% online</p>
   <p>Araxá - MG | Atendimento em todo o Brasil</p>
-  <a class="btn" href="https://wa.me/5534988374643">Quero saber mais</a>
+  <a class="btn" href="https://wa.me/5534988374643">Saber mais</a>
 </header>
 
 <section id="servicos">
@@ -225,33 +251,33 @@ footer {
 
 <section id="especialidades">
   <h2>Nossas especialidades</h2>
-  <p>•IRPF 
-    • MEI 
-    • Simples Nacional 
-    • Lucro Presumido 
-    • Produtores Rurais 
-    • Assessoria completa</p>
+  <ul class="lista">
+    <li>IRPF</li>
+    <li>MEI</li>
+    <li>Simples Nacional</li>
+    <li>Lucro Presumido</li>
+    <li>Produtores Rurais</li>
+    <li>Assessoria completa</li>
+  </ul>
 </section>
 
 <section id="historia" class="historia">
   <img src="meninasjb.jpg">
   <div class="historia-texto">
     <h2>Nossa História</h2>
-    <p>A Jb Contabilidade nasceu após três profissionais que perceberem a necessidade de um atendimento mais humano e próximo, mesmo que online. Tendo como prioridade acompanhar e impulsionar a evolução de cada cliente.</p>
-    <p>Nossa empresa é composta por Josiane no setor fiscal, Beatriz no contábil e Jessica que integrou o departamento pessoal, formando uma equipe completa, oferecendo soluções seguras e personalizadas.</p>
+    <p>A Jb Contabilidade nasceu após três profissionais: Josiane, Beatriz e Jéssica que perceberam a necessidade de um atendimento mais humano e próximo em 2023.</p>
+    <p>Hoje oferecemos soluções completas com foco no crescimento de cada cliente.</p>
   </div>
 </section>
 
-<section>
+<section id="porque">
   <h2>Por que escolher a JB?</h2>
-  <div class="cards">
-    <div class="card">
-      <p>✔ Atendimento humanizado e próximo</p>
-      <p>✔ Agilidade nas respostas e soluções</p>
-      <p>✔ Equipe qualificada e atualizada</p>
-      <p>✔ Segurança nas informações e processos</p>
-      <p>✔ Foco no crescimento do cliente</p>
-    </div>
+  <div class="porque">
+    <p>✔ Atendimento humanizado e próximo</p>
+    <p>✔ Agilidade nas respostas</p>
+    <p>✔ Equipe qualificada</p>
+    <p>✔ Segurança nos processos</p>
+    <p>✔ Foco total no crescimento do cliente</p>
   </div>
 </section>
 
