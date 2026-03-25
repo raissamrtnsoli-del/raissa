@@ -150,16 +150,21 @@ p {
 
 /* ESPECIALIDADES */
 .lista {
-  columns: 2;
-  text-align: left;
+  gap: 60px;
+  display: flex;
+  justify-content: space-between;
   max-width: 600px;
   margin: auto;
+  text-align: left;
+}
+
+.lista ul {
+  list-style: none;
+  padding: 0;
 }
 
 .lista li {
   margin: 8px 0;
-  font-size: 1.22em;
-  font-weight: 500;
 }
 
 /* HISTÓRIA */
@@ -313,14 +318,19 @@ footer {
 
 <section id="especialidades">
   <h2>Nossas especialidades</h2>
-  <ul class="lista">
+ <div class="lista">
+  <ul>
     <li>IRPF</li>
     <li>MEI</li>
     <li>Simples Nacional</li>
+  </ul>
+
+  <ul>
     <li>Lucro Presumido</li>
     <li>Produtores Rurais</li>
     <li>Assessoria completa</li>
   </ul>
+</div>
 </section>
 
 <section id="historia">
