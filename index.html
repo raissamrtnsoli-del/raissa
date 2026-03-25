@@ -5,228 +5,201 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jb Contabilidade</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Cormorant+Garamond:wght@300;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
-/* =================== GERAL =================== */
+/* ===== GERAL ===== */
 body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
   background: #ffffff;
   color: #000;
-  scroll-behavior: smooth; /* scroll suave */
+  scroll-behavior: smooth;
+  font-size: 18px;
 }
+
+h1 { font-size: 42px; }
+h2 { font-size: 32px; }
+h3 { font-size: 22px; }
 
 h1, h2, h3 {
   color: #043a49;
 }
 
-/* =================== MENU =================== */
+/* ===== MENU ===== */
 nav {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 15px 40px;
+  justify-content: flex-start;
+  gap: 40px;
+  padding: 20px 60px;
   background: #f1eab9;
-  position: fixed; /* menu fixo */
+  position: fixed;
   width: 100%;
   top: 0;
-  left: 0;
   z-index: 1000;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  transition: background 0.3s ease;
-}
-
-nav.scrolled {
-  background: #aa9465; /* muda cor ao rolar */
 }
 
 nav .logo img {
-  height: 50px;
+  height: 70px; /* logo maior */
 }
 
-nav .menu {
+.menu {
   display: flex;
-  gap: 20px;
+  gap: 25px;
 }
 
 nav a {
   text-decoration: none;
   color: #043a49;
   font-weight: 600;
-  transition: color 0.3s ease;
 }
 
-nav a:hover {
-  color: #aa9465;
-}
-
-/* =================== HEADER =================== */
+/* ===== HEADER ===== */
 header {
   text-align: center;
-  padding: 120px 20px 80px; /* ajustar por menu fixo */
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeInUp 1s forwards;
+  padding: 140px 20px 80px;
 }
 
+/* BOTÃO */
 .btn {
   display: inline-block;
   margin-top: 20px;
-  padding: 12px 24px;
+  padding: 14px 28px;
   background: #aa9465;
   color: #fff;
   text-decoration: none;
-  border-radius: 5px;
-  transition: background 0.3s ease;
+  border-radius: 6px;
+  font-size: 18px;
 }
 
-.btn:hover {
-  background: #043a49;
-}
-
-/* =================== SEÇÕES =================== */
+/* ===== SEÇÕES ===== */
 section {
   padding: 80px 20px;
   text-align: center;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease;
 }
 
-section.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* =================== CARDS =================== */
+/* ===== CARDS (AGORA AZUIS) ===== */
 .cards {
   display: flex;
-  gap: 20px;
+  gap: 25px;
   justify-content: center;
   flex-wrap: wrap;
 }
 
 .card {
-  background: #f1eab9;
-  padding: 20px;
-  border-radius: 8px;
-  width: 250px;
-  transition: transform 0.3s ease;
+  background: #043a49;
+  color: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  width: 270px;
 }
 
-.card:hover {
-  transform: translateY(-5px);
-}
-
-/* =================== LISTA =================== */
+/* ===== LISTA ===== */
 .lista {
   display: flex;
   justify-content: center;
-  gap: 40px;
+  gap: 60px;
 }
 
 .coluna {
   text-align: left;
 }
 
-/* =================== HISTORIA =================== */
+/* ===== HISTORIA ===== */
 .historia {
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 40px;
   justify-content: center;
   flex-wrap: wrap;
 }
 
 .historia img {
-  width: 250px;
+  width: 280px;
   border-radius: 10px;
-  transition: transform 0.3s ease;
-}
-
-.historia img:hover {
-  transform: scale(1.05);
 }
 
 .historia-texto {
-  max-width: 400px;
+  max-width: 450px;
   text-align: left;
 }
 
-/* =================== CONTATO =================== */
+/* ===== CONTATO ===== */
 .contato-container {
   display: flex;
-  gap: 40px;
-  align-items: flex-start;
+  gap: 50px;
   justify-content: center;
   flex-wrap: wrap;
 }
 
+/* FORM */
 .form-box {
   flex: 1;
-  min-width: 300px;
+  min-width: 320px;
 }
 
 form input, form textarea {
   width: 100%;
-  padding: 10px;
-  margin: 10px 0;
+  padding: 14px;
+  margin: 12px 0;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 6px;
+  font-size: 16px; /* padronizado */
+  font-family: 'Montserrat', sans-serif;
+}
+
+form textarea {
+  height: 120px;
+  resize: none;
 }
 
 form button {
   background: #043a49;
   color: #fff;
-  padding: 10px;
+  padding: 14px;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
+  font-size: 16px;
   cursor: pointer;
 }
 
+/* INFO CONTATO */
 .info-contato {
   flex: 1;
-  min-width: 250px;
+  min-width: 280px;
   text-align: left;
+  font-size: 18px;
 }
 
-.info-contato p {
-  margin: 15px 0;
-}
-
-/* =================== FOOTER =================== */
+/* ===== FOOTER ===== */
 footer {
   text-align: center;
   padding: 20px;
   background: #f1eab9;
+  font-size: 14px; /* menor que tudo */
 }
 
-/* =================== FLOAT BUTTONS =================== */
+/* ===== FLOAT ===== */
 .whatsapp, .instagram {
   position: fixed;
   right: 20px;
 }
 
-.whatsapp {
-  bottom: 80px;
-}
-
-.instagram {
-  bottom: 20px;
-}
+.whatsapp { bottom: 80px; }
+.instagram { bottom: 20px; }
 
 .whatsapp img, .instagram img {
   width: 40px;
 }
 
-/* =================== RESPONSIVO =================== */
+/* ===== RESPONSIVO ===== */
 @media (max-width: 768px) {
 
   nav {
     flex-direction: column;
-    gap: 10px;
+    align-items: center;
   }
 
   .menu {
@@ -248,20 +221,12 @@ footer {
   }
 }
 
-/* =================== ANIMAÇÕES =================== */
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 </style>
 </head>
 
 <body>
 
-<nav id="navbar">
+<nav>
   <a href="#inicio" class="logo">
     <img src="logo.png" alt="Jb Contabilidade">
   </a>
@@ -288,7 +253,7 @@ footer {
   <div class="cards">
     <div class="card"><h3>Fiscal</h3><p>Apuração de impostos e planejamento tributário.</p></div>
     <div class="card"><h3>Contábil</h3><p>Controle financeiro e relatórios completos.</p></div>
-    <div class="card"><h3>Departamento Pessoal</h3><p>Gestão completa de colaboradores e folha de pagamento.</p></div>
+    <div class="card"><h3>Departamento Pessoal</h3><p>Gestão completa de colaboradores.</p></div>
   </div>
 </section>
 
@@ -313,7 +278,7 @@ footer {
   <div class="historia">
     <img src="meninasjb.jpg">
     <div class="historia-texto">
-      <p>A Jb Contabilidade nasceu após três profissionais: Josiane, Beatriz e Jéssica que perceberam a necessidade de um atendimento mais humano e próximo em 2023.</p>
+      <p>A Jb Contabilidade nasceu após três profissionais...</p>
       <p>Hoje oferecemos soluções completas com foco no crescimento de cada cliente.</p>
     </div>
   </div>
@@ -322,11 +287,11 @@ footer {
 <section id="porque">
   <h2>Por que escolher a Jb?</h2>
   <div class="porque">
-    <p>✔ Atendimento humanizado e próximo</p>
+    <p>✔ Atendimento humanizado</p>
     <p>✔ Agilidade nas respostas</p>
     <p>✔ Equipe qualificada</p>
     <p>✔ Segurança nos processos</p>
-    <p>✔ Foco total no crescimento do cliente</p>
+    <p>✔ Foco no crescimento</p>
   </div>
 </section>
 
@@ -362,33 +327,6 @@ footer {
 <a class="instagram" href="https://instagram.com/jbassessoria_contabil">
   <img src="https://cdn-icons-png.flaticon.com/512/733/733558.png">
 </a>
-
-<script>
-// =================== SCROLL ANIMADO ===================
-const sections = document.querySelectorAll('section');
-const options = { threshold: 0.2 };
-
-const observer = new IntersectionObserver((entries, observer) => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
-  });
-}, options);
-
-sections.forEach(section => observer.observe(section));
-
-// =================== MENU ESCURO AO ROLAR ===================
-const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  if(window.scrollY > 80){
-    navbar.classList.add('scrolled');
-  } else {
-    navbar.classList.remove('scrolled');
-  }
-});
-</script>
 
 </body>
 </html>
