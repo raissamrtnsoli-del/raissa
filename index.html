@@ -133,18 +133,14 @@ section:nth-child(even) {
 
 /* TÍTULOS PADRÃO */
 h2 {
-  position: relative;
-  display: inline-block;
-  margin-bottom: 50px;
-}
-
-h2::after {
-  content: "";
-  display: block;
-  width: 80px;
-  height: 4px;
-  background: white;
-  margin: 10px auto 0;
+  font-size: 2em;
+  margin-bottom: 45px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid rgba(255,255,255,0.3);
+  
+  display: block; /* MUITO IMPORTANTE */
+  width: 100%;     /* FAZ A LINHA IR ATÉ O FINAL */
+  text-align: center;
 }
 /* AJUSTES ESPECÍFICOS 👇 */
 .historia h2 {
@@ -381,7 +377,6 @@ footer {
 </section>
 
 <section id="historia">
-
   <h2>Nossa História</h2>
 
   <div class="historia">
@@ -392,7 +387,6 @@ footer {
       <p>Hoje oferecemos soluções completas com foco no crescimento de cada cliente.</p>
     </div>
   </div>
-
 </section>
 
 <section id="porque">
