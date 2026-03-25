@@ -1,8 +1,5 @@
-name: Upload do site
-  uses: actions/upload-artifact@v4
-  with:
-   name: github-pages
-    path: ./public
+name: Deploy site
+
 on:
   push:
     branches:
@@ -21,17 +18,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout código
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Configurar GitHub Pages
+      - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload do site
+      - name: Upload site
         uses: actions/upload-artifact@v4
         with:
           name: github-pages
-          path: ./
+          path: ./public
 
   deploy:
     needs: build
@@ -42,6 +39,6 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      - name: Publicar no GitHub Pages
+      - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
