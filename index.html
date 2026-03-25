@@ -9,12 +9,38 @@
 
 <style>
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
   background: #043a49;
   color: white;
   text-align: center;
+  padding-top: 70px;
+}
+
+/* MENU */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #032c38;
+  padding: 15px;
+  z-index: 1000;
+}
+
+nav a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+nav a:hover {
+  opacity: 0.7;
 }
 
 /* ANIMAÇÃO */
@@ -50,20 +76,16 @@ header * {
   position: relative;
 }
 
-/* LOGO MELHOR POSICIONADA */
 .logo {
   width: 260px;
   margin-bottom: 20px;
 }
 
-/* TÍTULO PROFISSIONAL */
 header h1 {
   font-size: 2.8em;
   font-weight: 700;
-  letter-spacing: 1px;
 }
 
-/* BOTÃO */
 .btn {
   display: inline-block;
   margin-top: 30px;
@@ -130,7 +152,7 @@ p {
   min-width: 250px;
 }
 
-/* ESPECIALIDADES EM LISTA */
+/* LISTA */
 .lista {
   list-style: none;
   padding: 0;
@@ -140,7 +162,7 @@ p {
   margin: 8px 0;
 }
 
-/* HISTÓRIA COM IMAGEM */
+/* HISTÓRIA */
 .historia {
   display: flex;
   flex-direction: column;
@@ -181,7 +203,7 @@ form button {
   font-weight: 600;
 }
 
-/* RODAPÉ */
+/* FOOTER */
 footer {
   background: #032c38;
   padding: 25px;
@@ -192,22 +214,26 @@ footer {
 
 <body>
 
-<header class="hidden">
+<!-- MENU -->
+<nav>
+  <a href="#inicio">Início</a>
+  <a href="#servicos">Serviços</a>
+  <a href="#especialidades">Especialidades</a>
+  <a href="#historia">História</a>
+  <a href="#contato">Contato</a>
+</nav>
 
+<header id="inicio" class="hidden">
   <img src="logo.png" class="logo">
-
   <h1>JB Contabilidade</h1>
-
   <p>Assessoria completa e 100% online</p>
   <p>Araxá - MG | Atendimento em todo o Brasil</p>
-
   <a class="btn" href="https://wa.me/5534988374643">
-    Quero saber mais
+    Falar sobre a minha empresa
   </a>
-
 </header>
 
-<section class="hidden">
+<section id="servicos" class="hidden">
   <h2>Nossos Serviços</h2>
   <div class="cards">
     <div class="card"><h3>Fiscal</h3><p>Apuração de impostos e planejamento tributário.</p></div>
@@ -216,7 +242,7 @@ footer {
   </div>
 </section>
 
-<section class="hidden">
+<section id="especialidades" class="hidden">
   <h2>Nossas especialidades</h2>
   <ul class="lista">
     <li>IRPF</li>
@@ -224,19 +250,15 @@ footer {
     <li>Simples Nacional</li>
     <li>Lucro Presumido</li>
     <li>Produtores Rurais</li>
-    <li>Assessoria Contábil Completa</li>
+    <li>Assessoria contábil completa</li>
   </ul>
 </section>
 
-<section class="hidden historia">
+<section id="historia" class="hidden historia">
   <h2>Nossa História</h2>
-
-  <p>A JB Contabilidade nasceu com um propósito claro: oferecer um atendimento mais humano, próximo e eficiente.</p>
-
-  <p>Fundada por profissionais experientes nas áreas fiscal, contábil e departamento pessoal, a empresa se destaca por acompanhar de perto a evolução de cada cliente.</p>
-
-  <img src="meninasjb.jpg">
-
+  <p>A JB Contabilidade nasceu com o propósito de oferecer um atendimento mais humano e eficiente.</p>
+  <p>Com atuação nas áreas fiscal, contábil e departamento pessoal, ajudamos empresas a crescer com segurança.</p>
+  <img src="sua-foto.jpg">
 </section>
 
 <section class="hidden">
@@ -261,9 +283,9 @@ footer {
   </form>
 </section>
 
-<section class="hidden">
+<section id="contato" class="hidden">
   <h2>Contato</h2>
-  <p>WhatsApp: +55 (34) 98837-4643</p>
+  <p>WhatsApp: (34) 98837-4643</p>
   <p>Email: jbcontabilidade23@gmail.com</p>
   <p>Instagram: @jbassessoria_contabil</p>
 </section>
@@ -272,7 +294,6 @@ footer {
   <p>© 2026 Jb Contabilidade</p>
 </footer>
 
-<!-- BOTÕES FLUTUANTES -->
 <a class="whatsapp" href="https://wa.me/5534988374643">
   <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
 </a>
