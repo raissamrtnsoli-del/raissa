@@ -150,21 +150,31 @@ p {
 
 /* ESPECIALIDADES */
 .lista {
-  gap: 60px;
   display: flex;
-  justify-content: space-between;
-  max-width: 600px;
-  margin: auto;
+  justify-content: center;
+  gap: 80px;
+  margin-top: 20px;
+}
+
+.coluna {
   text-align: left;
 }
 
-.lista ul {
-  list-style: none;
-  padding: 0;
+.coluna p {
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  background: rgba(255,255,255,0.05);
+  padding: 12px 18px;
+  border-radius: 10px;
+  margin: 10px 0;
+  font-size: 1.1em;
+  transition: 0.3s;
 }
 
-.lista li {
-  margin: 8px 0;
+/* EFEITO AO PASSAR O MOUSE */
+.coluna p:hover {
+  background: rgba(255,255,255,0.12);
+  transform: translateX(5px);
 }
 
 /* HISTÓRIA */
@@ -263,10 +273,14 @@ footer {
   }
 
   .lista {
-    columns: 1;
-    text-align: center;
+    flex-direction: column;
+    align-items: center;
   }
 
+  .coluna {
+    text-align: center;
+  }
+}
   .porque {
     text-align: center;
   }
@@ -319,17 +333,19 @@ footer {
 <section id="especialidades">
   <h2>Nossas especialidades</h2>
  <div class="lista">
-  <ul>
-    <li>IRPF</li>
-    <li>MEI</li>
-    <li>Simples Nacional</li>
-  </ul>
 
-  <ul>
-    <li>Lucro Presumido</li>
-    <li>Produtores Rurais</li>
-    <li>Assessoria completa</li>
-  </ul>
+  <div class="coluna">
+    <p>✔ IRPF</p>
+    <p>✔ MEI</p>
+    <p>✔ Simples Nacional</p>
+  </div>
+
+  <div class="coluna">
+    <p>✔ Lucro Presumido</p>
+    <p>✔ Produtores Rurais</p>
+    <p>✔ Assessoria completa</p>
+  </div>
+
 </div>
 </section>
 
