@@ -5,10 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jb Contabilidade</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
 
 <style>
-
+  .jb {
+  font-size: 1.3em;
+  font-family: 'Playfair Display', serif;
+}
+.contabilidade {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+}
+header h1 {
+  font-size: 4em;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 10px; /* evita ficar colado no texto abaixo */
+}
 html {
   scroll-behavior: smooth;
 }
@@ -63,8 +76,16 @@ header * {
 }
 
 header h1 {
-  font-size: 3.5em;
+  font-size: 3.8em;
   font-weight: 700;
+}
+
+.jb {
+  font-family: 'Playfair Display', serif;
+}
+
+.contabilidade {
+  font-family: 'Montserrat', sans-serif;
 }
 
 header p {
@@ -112,13 +133,19 @@ section:nth-child(even) {
 
 /* TÍTULOS PADRÃO */
 h2 {
-  font-size: 2em;
-  margin-bottom: 45px;
-  border-bottom: 2px solid rgba(255,255,255,0.3);
+  position: relative;
   display: inline-block;
-  padding-bottom: 5px;
+  margin-bottom: 50px;
 }
 
+h2::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: white;
+  margin: 10px auto 0;
+}
 /* AJUSTES ESPECÍFICOS 👇 */
 .historia h2 {
   margin-bottom: 15px;
@@ -181,13 +208,13 @@ p {
 #historia h2 {
   text-align: center;
   display: block;
+  margin-bottom: 40px; /* espaço abaixo do título */
 }
 
 .historia {
   display: flex;
-  gap: 40px;
   align-items: center;
-  margin-top: 30px;
+  gap: 40px;
   text-align: left;
 }
 
@@ -198,6 +225,10 @@ p {
 
 .historia-texto {
   flex: 1;
+}
+
+.historia-texto p {
+  margin: 8px 0; /* diminui espaço entre parágrafos */
 }
 
 /* POR QUE ESCOLHER */
@@ -315,10 +346,10 @@ footer {
 </nav>
 
 <header id="inicio">
-  <h1>Jb Contabilidade</h1>
-  <p>Assessoria completa e 100% online</p>
-  <p>Araxá - MG | Atendimento em todo o Brasil</p>
-  <a class="btn" href="https://wa.me/5534988374643">Saber mais</a>
+  <h1>
+  <span class="jb">Jb</span> 
+  <span class="contabilidade">Contabilidade</span>
+</h1>
 </header>
 
 <section id="servicos">
