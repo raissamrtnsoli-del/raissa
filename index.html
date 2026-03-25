@@ -5,8 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jb Contabilidade</title>
 
-<!-- FONTES -->
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Calligraffitti&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Sacramento&display=swap" rel="stylesheet">
 
 <style>
 
@@ -32,7 +31,7 @@ body {
 header {
   background: url('logo.png') no-repeat center center;
   background-size: cover;
-  padding: 140px 20px;
+  padding: 200px 20px;
   text-align: center;
   position: relative;
 }
@@ -42,7 +41,7 @@ header::before {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: rgba(4,58,73,0.8);
+  background: rgba(4,58,73,0.85);
   top: 0;
   left: 0;
 }
@@ -51,23 +50,30 @@ header * {
   position: relative;
 }
 
+/* LOGO */
+.logo {
+  width: 240px;
+  margin-bottom: 25px;
+  filter: drop-shadow(0px 8px 20px rgba(0,0,0,0.6));
+}
+
 /* TÍTULO */
 header h1 {
   font-size: 3em;
   margin: 0;
 }
 
-/* Jb DIFERENCIADO */
+/* JB DIFERENCIADO */
 .jb {
-  font-family: 'Calligraffitti', cursive;
-  font-size: 1.2em;
+  font-family: 'Sacramento', cursive;
+  font-size: 1.3em;
 }
 
 /* BOTÃO */
 .btn {
   display: inline-block;
-  margin-top: 25px;
-  padding: 16px 28px;
+  margin-top: 30px;
+  padding: 18px 30px;
   background: white;
   color: #043a49;
   border-radius: 10px;
@@ -81,30 +87,31 @@ header h1 {
   bottom: 20px;
   right: 20px;
   background: #25d366;
-  padding: 15px;
+  padding: 16px;
   border-radius: 50%;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.4);
 }
 
 .whatsapp img {
-  width: 30px;
+  width: 32px;
 }
 
 /* SEÇÕES */
 section {
-  padding: 70px 20px;
+  padding: 80px 20px;
   max-width: 1000px;
   margin: auto;
 }
 
 h2 {
   text-align: center;
-  font-size: 2em;
+  font-size: 2.2em;
   margin-bottom: 30px;
 }
 
 p {
-  font-size: 1em;
-  line-height: 1.6;
+  font-size: 1.05em;
+  line-height: 1.7;
 }
 
 /* CARDS */
@@ -117,8 +124,8 @@ p {
 .card {
   background: rgba(255,255,255,0.05);
   border: 1px solid rgba(255,255,255,0.2);
-  padding: 25px;
-  border-radius: 12px;
+  padding: 30px;
+  border-radius: 15px;
   flex: 1;
   min-width: 250px;
 }
@@ -126,26 +133,39 @@ p {
 /* FORMULÁRIO */
 form {
   background: rgba(255,255,255,0.05);
-  padding: 25px;
-  border-radius: 12px;
+  padding: 30px;
+  border-radius: 15px;
 }
 
-form input, form textarea {
+form input,
+form textarea {
   width: 100%;
-  padding: 14px;
-  margin: 10px 0;
+  padding: 15px;
+  margin: 12px 0;
   border-radius: 8px;
   border: none;
+  font-family: 'Montserrat', sans-serif;
   font-size: 1em;
+  font-style: italic;
 }
 
+/* PLACEHOLDER */
+form input::placeholder,
+form textarea::placeholder {
+  font-style: italic;
+  opacity: 0.7;
+}
+
+/* BOTÃO */
 form button {
   width: 100%;
-  padding: 14px;
+  padding: 16px;
   background: white;
   color: #043a49;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1em;
   font-weight: 600;
   cursor: pointer;
 }
@@ -158,7 +178,7 @@ form button {
 /* RODAPÉ */
 footer {
   background: #032c38;
-  padding: 20px;
+  padding: 25px;
   text-align: center;
 }
 
@@ -168,14 +188,22 @@ footer {
 <body>
 
 <header class="hidden">
-  <h1><span class="jb">JB</span> Contabilidade</h1>
-  <p>Atendimento humanizado, sem burocracia e 100% online</p>
+
+  <img src="logo.png" class="logo">
+
+  <h1><span class="jb">Jb</span> Contabilidade</h1>
+
+  <p>Assessoria completa e 100% online</p>
   <p>Araxá - MG | Atendimento em todo o Brasil</p>
-  <a class="btn" href="https://wa.me/5534988374643">Falar no WhatsApp</a>
+
+  <a class="btn" href="https://wa.me/5534988374643">
+    Falar sobre a minha empresa
+  </a>
+
 </header>
 
 <section class="hidden">
-  <h2>🚀 Nossos Serviços</h2>
+  <h2>Nossos Serviços</h2>
   <div class="cards">
     <div class="card"><h3>Fiscal</h3><p>Apuração de impostos e planejamento tributário.</p></div>
     <div class="card"><h3>Contábil</h3><p>Controle financeiro e relatórios completos.</p></div>
@@ -184,19 +212,18 @@ footer {
 </section>
 
 <section class="hidden">
-  <h2>📊 Especialidades</h2>
+  <h2>Nossas especialidades</h2>
   <p>IRPF • MEI • Simples Nacional • Lucro Presumido • Produtores Rurais • Assessoria contábil completa</p>
 </section>
 
 <section class="hidden">
-  <h2>💡 Nossa História</h2>
-  <p>A JB Contabilidade nasceu da necessidade de um atendimento mais humano.</p>
-  <p>Com atuação de Josiane na área fiscal, Beatriz na contábil e Jessica integrando o departamento pessoal, 
-    a equipe oferece soluções completas desde 2023.</p>
+  <h2>Nossa História</h2>
+  <p>A Jb Contabilidade nasceu após três profissionais que perceberam a necessidade de um atendimento mais humano e próximo.</p>
+  <p>Com atuação de Josiane, Beatriz e Jessica, a empresa oferece soluções completas desde 2023.</p>
 </section>
 
 <section class="hidden">
-  <h2>🤝 Por que escolher a JB?</h2>
+  <h2>Por que escolher a Jb?</h2>
   <div class="cards">
     <div class="card">
       <p>✔ Atendimento humanizado</p>
@@ -208,11 +235,11 @@ footer {
 </section>
 
 <section class="hidden">
-  <h2> Envie suas dúvidas, estamos aqui para te auxiliar! </h2>
+  <h2>Envie suas dúvidas</h2>
   <form action="https://formsubmit.co/jbcontabilidade23@gmail.com" method="POST">
     <input type="text" name="nome" placeholder="Seu nome" required>
     <input type="email" name="email" placeholder="Seu email" required>
-    <textarea name="mensagem" placeholder="Descreva sua necessidade..." required></textarea>
+    <textarea name="mensagem" placeholder="Escreva aqui sua dúvida..." required></textarea>
     <button type="submit">Enviar</button>
   </form>
 </section>
@@ -225,7 +252,7 @@ footer {
 </section>
 
 <footer>
-  <p>© 2026 JB Contabilidade</p>
+  <p>© 2026 Jb Contabilidade</p>
 </footer>
 
 <a class="whatsapp" href="https://wa.me/5534988374643">
