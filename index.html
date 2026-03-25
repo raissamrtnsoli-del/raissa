@@ -39,22 +39,7 @@ nav a {
   font-weight: 600;
 }
 
-nav a:hover {
-  opacity: 0.7;
-}
-
-/* ANIMAÇÃO */
-.hidden {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.8s ease;
-}
-.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* HEADER */
+/* HEADER (APENAS FUNDO COM LOGO) */
 header {
   background: url('logo.png') no-repeat center;
   background-size: cover;
@@ -76,16 +61,12 @@ header * {
   position: relative;
 }
 
-.logo {
-  width: 260px;
-  margin-bottom: 20px;
-}
-
 header h1 {
   font-size: 2.8em;
   font-weight: 700;
 }
 
+/* BOTÃO */
 .btn {
   display: inline-block;
   margin-top: 30px;
@@ -103,33 +84,34 @@ header h1 {
   right: 20px;
   padding: 15px;
   border-radius: 50%;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.4);
 }
 
-.whatsapp {
-  bottom: 20px;
-  background: #25d366;
-}
-
-.instagram {
-  bottom: 90px;
-  background: #E1306C;
-}
+.whatsapp { bottom: 20px; background: #25d366; }
+.instagram { bottom: 90px; background: #E1306C; }
 
 .whatsapp img, .instagram img {
   width: 28px;
 }
 
-/* SEÇÕES */
+/* SEÇÕES DIFERENCIADAS */
 section {
   padding: 80px 20px;
-  max-width: 900px;
+  max-width: 1000px;
   margin: auto;
 }
 
+section:nth-child(even) {
+  background: rgba(255,255,255,0.03);
+  border-radius: 10px;
+}
+
+/* TÍTULOS MAIS PROFISSIONAIS */
 h2 {
   font-size: 2em;
   margin-bottom: 25px;
+  border-bottom: 2px solid rgba(255,255,255,0.3);
+  display: inline-block;
+  padding-bottom: 5px;
 }
 
 p {
@@ -152,31 +134,24 @@ p {
   min-width: 250px;
 }
 
-/* LISTA */
-.lista {
-  list-style: none;
-  padding: 0;
-}
-
-.lista li {
-  margin: 8px 0;
-}
-
-/* HISTÓRIA */
+/* HISTÓRIA COM IMAGEM LADO A LADO */
 .historia {
   display: flex;
-  flex-direction: column;
-  gap: 20px;
+  gap: 30px;
   align-items: center;
+  text-align: left;
 }
 
 .historia img {
-  width: 100%;
-  max-width: 400px;
+  width: 350px;
   border-radius: 15px;
 }
 
-/* FORMULÁRIO */
+.historia-texto {
+  flex: 1;
+}
+
+/* FORMULÁRIO PADRONIZADO */
 form {
   background: rgba(255,255,255,0.05);
   padding: 30px;
@@ -190,7 +165,17 @@ form textarea {
   margin: 12px 0;
   border-radius: 8px;
   border: none;
+
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1em;
+  color: #043a49;
   font-style: italic;
+}
+
+form input::placeholder,
+form textarea::placeholder {
+  font-style: italic;
+  opacity: 0.7;
 }
 
 form button {
@@ -214,7 +199,6 @@ footer {
 
 <body>
 
-<!-- MENU -->
 <nav>
   <a href="#inicio">Início</a>
   <a href="#servicos">Serviços</a>
@@ -223,69 +207,67 @@ footer {
   <a href="#contato">Contato</a>
 </nav>
 
-<header id="inicio" class="hidden">
-  <img src="logo.png" class="logo">
-  <h1>JB Contabilidade</h1>
+<header id="inicio">
+  <h1>Jb Contabilidade</h1>
   <p>Assessoria completa e 100% online</p>
   <p>Araxá - MG | Atendimento em todo o Brasil</p>
-  <a class="btn" href="https://wa.me/5534988374643">
-    Falar sobre a minha empresa
-  </a>
+  <a class="btn" href="https://wa.me/5534988374643">Quero saber mais</a>
 </header>
 
-<section id="servicos" class="hidden">
+<section id="servicos">
   <h2>Nossos Serviços</h2>
   <div class="cards">
     <div class="card"><h3>Fiscal</h3><p>Apuração de impostos e planejamento tributário.</p></div>
     <div class="card"><h3>Contábil</h3><p>Controle financeiro e relatórios completos.</p></div>
-    <div class="card"><h3>Departamento Pessoal</h3><p>Gestão de funcionários e folha.</p></div>
+    <div class="card"><h3>Departamento Pessoal</h3><p>Gestão completa de colaboradores e folha de pagamento.</p></div>
   </div>
 </section>
 
-<section id="especialidades" class="hidden">
+<section id="especialidades">
   <h2>Nossas especialidades</h2>
-  <ul class="lista">
-    <li>IRPF</li>
-    <li>MEI</li>
-    <li>Simples Nacional</li>
-    <li>Lucro Presumido</li>
-    <li>Produtores Rurais</li>
-    <li>Assessoria contábil completa</li>
-  </ul>
+  <p>•IRPF 
+    • MEI 
+    • Simples Nacional 
+    • Lucro Presumido 
+    • Produtores Rurais 
+    • Assessoria completa</p>
 </section>
 
-<section id="historia" class="hidden historia">
-  <h2>Nossa História</h2>
-  <p>A JB Contabilidade nasceu com o propósito de oferecer um atendimento mais humano e eficiente.</p>
-  <p>Com atuação nas áreas fiscal, contábil e departamento pessoal, ajudamos empresas a crescer com segurança.</p>
-  <img src="sua-foto.jpg">
+<section id="historia" class="historia">
+  <img src="meninasjb.jpg">
+  <div class="historia-texto">
+    <h2>Nossa História</h2>
+    <p>A Jb Contabilidade nasceu após três profissionais que perceberem a necessidade de um atendimento mais humano e próximo, mesmo que online. Tendo como prioridade acompanhar e impulsionar a evolução de cada cliente.</p>
+    <p>Nossa empresa é composta por Josiane no setor fiscal, Beatriz no contábil e Jessica que integrou o departamento pessoal, formando uma equipe completa, oferecendo soluções seguras e personalizadas.</p>
+  </div>
 </section>
 
-<section class="hidden">
-  <h2>Por que escolher a Jb?</h2>
+<section>
+  <h2>Por que escolher a JB?</h2>
   <div class="cards">
     <div class="card">
-      <p>✔ Atendimento humanizado</p>
-      <p>✔ Resposta rápida</p>
-      <p>✔ 100% online</p>
-      <p>✔ Equipe especializada</p>
+      <p>✔ Atendimento humanizado e próximo</p>
+      <p>✔ Agilidade nas respostas e soluções</p>
+      <p>✔ Equipe qualificada e atualizada</p>
+      <p>✔ Segurança nas informações e processos</p>
+      <p>✔ Foco no crescimento do cliente</p>
     </div>
   </div>
 </section>
 
-<section class="hidden">
+<section>
   <h2>Envie suas dúvidas</h2>
   <form action="https://formsubmit.co/jbcontabilidade23@gmail.com" method="POST">
     <input type="text" name="nome" placeholder="Seu nome" required>
     <input type="email" name="email" placeholder="Seu email" required>
-    <textarea name="mensagem" placeholder="Escreva aqui sua dúvida..." required></textarea>
+    <textarea name="mensagem" placeholder="Escreva sua dúvida aqui..." required></textarea>
     <button type="submit">Enviar</button>
   </form>
 </section>
 
-<section id="contato" class="hidden">
+<section id="contato">
   <h2>Contato</h2>
-  <p>WhatsApp: (34) 98837-4643</p>
+  <p>WhatsApp: +55 (34) 98837-4643</p>
   <p>Email: jbcontabilidade23@gmail.com</p>
   <p>Instagram: @jbassessoria_contabil</p>
 </section>
@@ -298,20 +280,9 @@ footer {
   <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
 </a>
 
-<a class="instagram" href="https://instagram.com/jbassessoria_contabil" target="_blank">
+<a class="instagram" href="https://instagram.com/jbassessoria_contabil">
   <img src="https://cdn-icons-png.flaticon.com/512/733/733558.png">
 </a>
-
-<script>
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add('show');
-    }
-  });
-});
-document.querySelectorAll('.hidden').forEach(el => observer.observe(el));
-</script>
 
 </body>
 </html>
