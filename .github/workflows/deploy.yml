@@ -1,0 +1,38 @@
+name: Deploy site JB Contabilidade
+
+on:
+  push:
+    branches: ["main"]
+
+# FORÇA USO DO NODE 24 (corrige o aviso)
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar código
+        uses: actions/checkout@v4
+
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Enviar arquivos
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "./"
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Publicar site
+        uses: actions/deploy-pages@v4
