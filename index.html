@@ -67,7 +67,7 @@
       position: absolute;
       left: 40px;
       cursor: pointer;
-      height: 70px;
+      height: 110px; /* Aumentado */
       display: flex;
       align-items: center;
       flex-shrink: 0;
@@ -75,7 +75,7 @@
     }
 
     nav .logo img {
-      height: 70px;
+      height: 110px; /* Aumentado */
       display: block;
       user-select: none;
       pointer-events: none;
@@ -105,31 +105,52 @@
       outline: none;
     }
 
-    /* ===== HEADER (Página Inicial) ===== */
+    /* ===== PÁGINA INICIAL ===== */
     header {
       margin-top: 100px; /* Compensar menu fixo */
-      text-align: center;
+      display: flex;
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
       padding: 120px 20px 100px;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    header h1 {
-      font-size: 56px;
+      gap: 60px;
       color: var(--azul-escuro);
-      margin-bottom: 20px;
-      font-weight: 700;
-      letter-spacing: 1.2px;
     }
 
-    header p {
-      font-size: 22px;
-      margin: 10px 0;
-      font-weight: 500;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
+    .header-texto {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 30px;
+    }
+
+    .header-titulo {
+      font-size: 38px;
+      font-weight: 700;
+      line-height: 1.2;
+      white-space: pre-line;
+      user-select: text;
+      text-align: left;
+    }
+
+    /* Por que escolher - logo abaixo do título na esquerda */
+    .porque-container {
+      font-size: 20px;
+      font-weight: 600;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      max-width: 480px;
+      color: var(--azul-escuro);
+      user-select: none;
+    }
+
+    .porque-container p::before {
+      content: "✔";
+      color: var(--amarelo-claro);
+      margin-right: 10px;
+      font-weight: 700;
     }
 
     /* ===== SEÇÕES COM FUNDO COLORIDO - FULL WIDTH ===== */
@@ -154,10 +175,17 @@
       font-size: 20px;
     }
 
-    /* Fundos alternados por seção (exceto contato) */
+    /* Fundos alternados por seção (exceto contato) agora todos full width */
     section:nth-of-type(odd):not(#contato) {
       background: var(--branco);
       color: var(--preto-texto);
+      padding-left: 60px;
+      padding-right: 60px;
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
     }
 
     section:nth-of-type(even):not(#contato) {
@@ -165,6 +193,11 @@
       color: var(--preto-texto);
       padding-left: 60px;
       padding-right: 60px;
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
     }
 
     /* Títulos em azul escuro */
@@ -176,11 +209,12 @@
       text-align: center;
     }
 
-    /* ===== SEÇÃO SERVIÇOS ===== */
+    /* ===== SEÇÃO SERVIÇOS (com os textos antigos e títulos ajustados) ===== */
     #servicos {
       max-width: 1100px;
       margin: 80px auto 80px;
       padding: 0 20px;
+      color: var(--azul-escuro);
     }
 
     .cards {
@@ -214,25 +248,9 @@
       font-weight: 700;
     }
 
-    /* ===== ESPECIALIDADES ===== */
-    #especialidades {
-      max-width: 1100px;
-      margin: 80px auto 80px;
-      padding: 0 20px;
-    }
-
-    .lista {
-      display: flex;
-      justify-content: center;
-      gap: 90px;
-      font-size: 20px;
-      font-weight: 600;
-      color: var(--azul-escuro);
-    }
-
-    .coluna p {
-      margin: 14px 0;
-      user-select: none;
+    /* Serviços com textos antigos */
+    #servicos .card:nth-child(1) h3 {
+      content: "Fiscal";
     }
 
     /* ===== HISTÓRIA ===== */
@@ -294,25 +312,8 @@
       max-width: 620px;
     }
 
-    /* ===== POR QUE ESCOLHER ===== */
-    #porque {
-      max-width: 650px;
-      margin: 80px auto 80px;
-      font-size: 20px;
-      font-weight: 600;
-      color: var(--azul-escuro);
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-      padding: 0 20px;
-    }
-
-    #porque p::before {
-      content: "✔";
-      color: var(--amarelo-claro);
-      margin-right: 10px;
-      font-weight: 700;
-    }
+    /* ===== POR QUE ESCOLHER (removido do final, agora está na home) ===== */
+    /* Não usado aqui */
 
     /* ===== CONTATO ===== */
     #contato {
@@ -570,11 +571,11 @@
         position: relative;
         left: 0;
         margin-bottom: 10px;
-        height: 60px;
+        height: 80px;
       }
 
       nav .logo img {
-        height: 60px;
+        height: 80px;
       }
 
       nav .menu {
@@ -584,27 +585,28 @@
       }
 
       header {
-        padding: 100px 20px 80px;
+        flex-direction: column;
+        padding: 60px 20px 60px;
+        margin-top: 80px;
       }
 
-      header h1 {
-        font-size: 42px;
+      .header-titulo {
+        font-size: 28px;
+        text-align: center;
       }
 
-      header p {
+      .porque-container {
+        max-width: 100%;
+        align-items: center;
         font-size: 18px;
+        gap: 10px;
+        margin-top: 20px;
+        text-align: center;
       }
 
       .cards {
         flex-direction: column;
         align-items: center;
-      }
-
-      .lista {
-        flex-direction: column;
-        align-items: center;
-        gap: 30px;
-        font-size: 18px;
       }
 
       #historia {
@@ -621,63 +623,57 @@
       .historia-img-container {
         width: 240px;
         height: 240px;
-        border-radius: 20px;
+        border-radius: 50%;
+        margin-bottom: 20px;
       }
 
       .historia-img-container img {
-        border-radius: 20px;
-        border: 4px solid var(--amarelo-claro);
-        box-shadow: 0 6px 16px rgba(241, 234, 185, 0.6);
+        border-radius: 50%;
       }
 
       .historia-texto {
         max-width: 100%;
-        font-size: 18px;
-        line-height: 1.5;
+        text-align: center;
       }
 
-      #porque {
-        max-width: 100%;
-        font-size: 18px;
-        padding: 0 20px;
+      #contato {
+        padding: 40px 20px 100px;
       }
 
       .contato-container {
         flex-direction: column;
-        padding: 0 20px;
+        gap: 40px;
       }
 
-      .form-box {
+      .form-box,
+      .info-contato {
         max-width: 100%;
         width: 100%;
+        text-align: center;
       }
 
-      .info-contato {
-        width: 100%;
-        padding-top: 40px;
-        font-size: 18px;
+      .info-contato strong {
+        min-width: auto;
       }
 
       .barra-inferior {
-        padding: 14px 20px;
+        padding: 12px 20px;
+        flex-direction: column;
+        gap: 10px;
         font-size: 16px;
       }
 
+      .barra-inferior .btn-contato,
       .barra-inferior a.telefone-link {
         font-size: 18px;
-      }
-
-      .barra-inferior .btn-contato {
-        padding: 12px 28px;
-        font-size: 16px;
       }
     }
   </style>
 </head>
 
 <body>
-  <nav>
-    <a href="#top" class="logo" aria-label="Jb Contabilidade logo">
+  <nav role="navigation" aria-label="Menu principal">
+    <a href="#top" class="logo" aria-label="Logo Jb Contabilidade">
       <img src="logo.png" alt="Logo Jb Contabilidade" />
     </a>
     <div class="menu" role="menubar" aria-label="Menu principal">
@@ -689,69 +685,78 @@
     </div>
   </nav>
 
-  <header id="top" tabindex="-1">
-    <h1>Jb Contabilidade</h1>
-    <p>Seu parceiro confiável para soluções contábeis precisas e eficientes.</p>
-    <p>Contabilidade especializada para transformar seu negócio.</p>
+  <header id="top" tabindex="-1" role="banner" aria-label="Página inicial">
+    <div class="header-texto">
+      <h1 class="header-titulo" aria-label="Título da página inicial">
+        Assessoria completa e 100% online
+        <br />
+        Araxá - MG | Atendimento em todo o Brasil
+      </h1>
+      <div class="porque-container" aria-label="Motivos para escolher Jb Contabilidade">
+        <p>Equipe altamente qualificada</p>
+        <p>Atendimento personalizado</p>
+        <p>Atualização constante em legislação</p>
+        <p>Foco na satisfação do cliente</p>
+      </div>
+    </div>
   </header>
 
-  <section id="servicos">
-    <h2>Serviços</h2>
-    <div class="cards" role="list">
-      <article class="card" role="listitem" tabindex="0" aria-label="Serviço de contabilidade fiscal">
-        <h3>Contabilidade Fiscal</h3>
-        <p>Gestão de tributos e obrigações fiscais com total transparência.</p>
-      </article>
-      <article class="card" role="listitem" tabindex="0" aria-label="Serviço de contabilidade financeira">
-        <h3>Contabilidade Financeira</h3>
-        <p>Controle financeiro para tomada de decisões estratégicas.</p>
-      </article>
-      <article class="card" role="listitem" tabindex="0" aria-label="Consultoria contábil">
-        <h3>Consultoria</h3>
-        <p>Assessoria especializada para crescimento sustentável.</p>
-      </article>
-    </div>
-  </section>
-
-  <section id="especialidades">
-    <h2>Especialidades</h2>
-    <div class="lista">
-      <div class="coluna" aria-label="Especialidades coluna 1">
-        <p>Folha de Pagamento</p>
-        <p>Impostos Diretos</p>
-        <p>Impostos Indiretos</p>
-      </div>
-      <div class="coluna" aria-label="Especialidades coluna 2">
-        <p>Controles Patrimoniais</p>
-        <p>Auditorias Internas</p>
-        <p>Planejamento Tributário</p>
+  <section id="servicos" aria-labelledby="servicos-title" class="color-block" style="background: var(--cinza-claro); color: var(--azul-escuro); padding-top: 100px; padding-bottom: 100px;">
+    <div class="inner-container">
+      <h2 id="servicos-title">Serviços</h2>
+      <div class="cards" role="list">
+        <article class="card" role="listitem" tabindex="0" aria-label="Serviço fiscal">
+          <h3>Fiscal</h3>
+          <p>Gestão de tributos e obrigações fiscais com total transparência.</p>
+        </article>
+        <article class="card" role="listitem" tabindex="0" aria-label="Serviço contábil">
+          <h3>Contábil</h3>
+          <p>Controle financeiro para tomada de decisões estratégicas.</p>
+        </article>
+        <article class="card" role="listitem" tabindex="0" aria-label="Departamento pessoal">
+          <h3>Departamento Pessoal</h3>
+          <p>Gestão eficiente da folha de pagamento e recursos humanos.</p>
+        </article>
       </div>
     </div>
   </section>
 
-  <section id="historia">
+  <section id="especialidades" aria-labelledby="especialidades-title" class="color-block" style="background: var(--azul-escuro); color: var(--amarelo-claro); padding-top: 100px; padding-bottom: 100px;">
+    <div class="inner-container">
+      <h2 id="especialidades-title">Especialidades</h2>
+      <div class="lista" aria-label="Lista de especialidades" style="display: flex; justify-content: center; gap: 60px; flex-wrap: wrap;">
+        <div class="coluna" aria-label="Especialidades coluna 1" style="display: flex; flex-direction: column; gap: 14px;">
+          <p>Folha de Pagamento</p>
+          <p>Impostos Diretos</p>
+          <p>Impostos Indiretos</p>
+        </div>
+        <div class="coluna" aria-label="Especialidades coluna 2" style="display: flex; flex-direction: column; gap: 14px;">
+          <p>Controles Patrimoniais</p>
+          <p>Auditorias Internas</p>
+          <p>Planejamento Tributário</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="historia" aria-labelledby="historia-title">
     <div class="historia-img-container" aria-label="Foto da equipe Jb Contabilidade">
       <img src="historia.jpg" alt="Equipe Jb Contabilidade sorrindo" />
     </div>
     <div class="historia-texto">
-      <h2>Nossa História</h2>
-      <p>Fundada em 2005, a Jb Contabilidade vem prestando serviços contábeis de alta qualidade para empresas de
-        diversos setores.</p>
+      <h2 id="historia-title">Nossa História</h2>
+      <p>Fundada em 2005, a Jb Contabilidade vem prestando serviços contábeis de alta qualidade para empresas de diversos setores.</p>
       <p>Nosso compromisso é com a excelência e a transparência, garantindo o sucesso dos nossos clientes.</p>
     </div>
   </section>
 
-  <section id="porque">
-    <h2>Por Que Escolher a Jb Contabilidade?</h2>
-    <p>Equipe altamente qualificada</p>
-    <p>Atendimento personalizado</p>
-    <p>Atualização constante em legislação</p>
-    <p>Foco na satisfação do cliente</p>
+  <section id="porque" aria-label="Por que escolher a Jb Contabilidade?" style="max-width: 1100px; margin: 80px auto 100px; padding: 0 20px; color: var(--azul-escuro); user-select:none;">
+    <!-- Esta seção aparece na home, mas mantida para acessibilidade e navegação -->
   </section>
 
-  <section id="contato">
-    <h2>Contato</h2>
-    <div class="contato-container">
+  <section id="contato" aria-labelledby="contato-title">
+    <h2 id="contato-title">Contato</h2>
+    <div class="contato-container" role="form">
       <div class="form-box">
         <form action="#" method="POST" aria-label="Formulário de contato">
           <input type="text" name="nome" placeholder="Nome" required aria-required="true" />
@@ -811,13 +816,13 @@
 
   <div class="barra-inferior" role="complementary" aria-label="Contato rápido">
     <a href="tel:+5511999999999" class="telefone-link" aria-label="Ligar para Jb Contabilidade">
-      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="currentColor">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="currentColor" width="28" height="28">
         <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21c1.21.49 2.53.76 3.88.76a1 1 0 011 1v3.5a1 1 0 01-1 1A17 17 0 013 6a1 1 0 011-1h3.5a1 1 0 011 1c0 1.35.27 2.67.76 3.88a1 1 0 01-.21 1.11l-2.43 2.4z" />
       </svg>
       (11) 99999-9999
     </a>
-    <button class="btn-contato" onclick="document.getElementById('contato').scrollIntoView({ behavior: 'smooth' });" aria-label="Abrir formulário de contato">
-      Contato
+    <button class="btn-contato" onclick="document.getElementById('contato').scrollIntoView({ behavior: 'smooth' });" aria-label="Abrir formulário fale conosco">
+      Fale Conosco
     </button>
   </div>
 </body>
