@@ -9,132 +9,158 @@
 
 <style>
 
-/* FUNDO */
+/* =================== GERAL =================== */
 body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #f1eab9;
-  color: black;
-  padding-top: 80px;
+  background: #ffffff;
+  color: #000;
+  scroll-behavior: smooth; /* scroll suave */
 }
 
-/* MENU */
+h1, h2, h3 {
+  color: #043a49;
+}
+
+/* =================== MENU =================== */
 nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: white;
-  padding: 15px 30px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 15px 40px;
+  background: #f1eab9;
+  position: fixed; /* menu fixo */
+  width: 100%;
+  top: 0;
+  left: 0;
   z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: background 0.3s ease;
 }
 
-.menu-links a {
-  color: #043a49;
-  margin: 0 15px;
-  text-decoration: none;
-  font-weight: 600;
+nav.scrolled {
+  background: #aa9465; /* muda cor ao rolar */
 }
 
-/* LOGO NO MENU */
-.logo-menu {
+nav .logo img {
   height: 50px;
 }
 
-/* HEADER */
-header {
-  padding: 140px 20px;
-  text-align: center;
+nav .menu {
+  display: flex;
+  gap: 20px;
 }
 
-header h1 {
-  font-size: 3.5em;
+nav a {
+  text-decoration: none;
   color: #043a49;
+  font-weight: 600;
+  transition: color 0.3s ease;
 }
 
-header p {
-  font-size: 1.3em;
+nav a:hover {
+  color: #aa9465;
+}
+
+/* =================== HEADER =================== */
+header {
+  text-align: center;
+  padding: 120px 20px 80px; /* ajustar por menu fixo */
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s forwards;
 }
 
 .btn {
   display: inline-block;
-  margin-top: 25px;
-  padding: 14px 28px;
-  background: #043a49;
-  color: white;
-  border-radius: 8px;
+  margin-top: 20px;
+  padding: 12px 24px;
+  background: #aa9465;
+  color: #fff;
   text-decoration: none;
+  border-radius: 5px;
+  transition: background 0.3s ease;
 }
 
-/* SEÇÕES */
+.btn:hover {
+  background: #043a49;
+}
+
+/* =================== SEÇÕES =================== */
 section {
   padding: 80px 20px;
-  max-width: 1000px;
-  margin: auto;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
 }
 
-h2 {
-  color: #043a49;
-  margin-bottom: 40px;
-  border-bottom: 3px solid #aa9465;
-  display: block;
-  padding-bottom: 10px;
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-/* CARDS */
+/* =================== CARDS =================== */
 .cards {
   display: flex;
   gap: 20px;
-  flex-wrap: wrap;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .card {
-  background: white;
-  padding: 25px;
-  border-radius: 12px;
-  min-width: 250px;
-  border: 1px solid #aa9465;
+  background: #f1eab9;
+  padding: 20px;
+  border-radius: 8px;
+  width: 250px;
+  transition: transform 0.3s ease;
 }
 
-/* ESPECIALIDADES */
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* =================== LISTA =================== */
 .lista {
   display: flex;
   justify-content: center;
-  gap: 60px;
+  gap: 40px;
 }
 
-.coluna p {
-  background: white;
-  padding: 10px 15px;
-  border-radius: 8px;
-  margin: 10px 0;
-  border: 1px solid #aa9465;
+.coluna {
+  text-align: left;
 }
 
-/* HISTÓRIA */
+/* =================== HISTORIA =================== */
 .historia {
   display: flex;
-  gap: 30px;
   align-items: center;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .historia img {
-  width: 350px;
-  border-radius: 15px;
+  width: 250px;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.historia img:hover {
+  transform: scale(1.05);
 }
 
 .historia-texto {
-  flex: 1;
+  max-width: 400px;
+  text-align: left;
 }
 
-/* CONTATO + FORM */
+/* =================== CONTATO =================== */
 .contato-container {
   display: flex;
   gap: 40px;
+  align-items: flex-start;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
@@ -143,72 +169,90 @@ h2 {
   min-width: 300px;
 }
 
+form input, form textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+form button {
+  background: #043a49;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 .info-contato {
   flex: 1;
   min-width: 250px;
+  text-align: left;
 }
 
 .info-contato p {
   margin: 15px 0;
 }
 
-/* FORM */
-form input,
-form textarea {
-  width: 100%;
-  padding: 14px;
-  margin: 10px 0;
-  border-radius: 8px;
-  border: 1px solid #aa9465;
-  font-style: italic;
+/* =================== FOOTER =================== */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #f1eab9;
 }
 
-form button {
-  width: 100%;
-  padding: 14px;
-  background: #043a49;
-  color: white;
-  border: none;
-  border-radius: 8px;
-}
-
-/* BOTÕES FLUTUANTES */
+/* =================== FLOAT BUTTONS =================== */
 .whatsapp, .instagram {
   position: fixed;
   right: 20px;
-  padding: 15px;
-  border-radius: 50%;
 }
 
-.whatsapp { bottom: 20px; background: #25d366; }
-.instagram { bottom: 90px; background: #E1306C; }
+.whatsapp {
+  bottom: 80px;
+}
+
+.instagram {
+  bottom: 20px;
+}
 
 .whatsapp img, .instagram img {
-  width: 28px;
+  width: 40px;
 }
 
-/* FOOTER */
-footer {
-  background: #043a49;
-  color: white;
-  padding: 20px;
-  text-align: center;
-}
-
-/* RESPONSIVO */
+/* =================== RESPONSIVO =================== */
 @media (max-width: 768px) {
-  .historia {
+
+  nav {
     flex-direction: column;
-    text-align: center;
+    gap: 10px;
+  }
+
+  .menu {
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .contato-container {
     flex-direction: column;
+    text-align: center;
   }
 
-  .lista {
-    flex-direction: column;
-    align-items: center;
+  .info-contato {
+    text-align: center;
+  }
+
+  .historia-texto {
+    text-align: center;
+  }
+}
+
+/* =================== ANIMAÇÕES =================== */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -217,13 +261,13 @@ footer {
 
 <body>
 
-<!-- MENU -->
-<nav>
-  <a href="#inicio">
-    <img src="logo.png" class="logo-menu">
+<nav id="navbar">
+  <a href="#inicio" class="logo">
+    <img src="logo.png" alt="Jb Contabilidade">
   </a>
 
-  <div class="menu-links">
+  <div class="menu">
+    <a href="#inicio">Início</a>
     <a href="#servicos">Serviços</a>
     <a href="#especialidades">Especialidades</a>
     <a href="#historia">História</a>
@@ -236,7 +280,7 @@ footer {
   <h1>Jb Contabilidade</h1>
   <p>Assessoria completa e 100% online</p>
   <p>Araxá - MG | Atendimento em todo o Brasil</p>
-  <a class="btn" href="#contato">Falar conosco</a>
+  <a class="btn" href="https://wa.me/5534988374643">Saber mais</a>
 </header>
 
 <section id="servicos">
@@ -269,7 +313,7 @@ footer {
   <div class="historia">
     <img src="meninasjb.jpg">
     <div class="historia-texto">
-      <p>A Jb Contabilidade nasceu após três profissionais que perceberam a necessidade de um atendimento mais humano em 2023.</p>
+      <p>A Jb Contabilidade nasceu após três profissionais: Josiane, Beatriz e Jéssica que perceberam a necessidade de um atendimento mais humano e próximo em 2023.</p>
       <p>Hoje oferecemos soluções completas com foco no crescimento de cada cliente.</p>
     </div>
   </div>
@@ -290,7 +334,6 @@ footer {
   <h2>Fale conosco</h2>
 
   <div class="contato-container">
-
     <div class="form-box">
       <form action="https://formsubmit.co/jbcontabilidade23@gmail.com" method="POST">
         <input type="text" name="nome" placeholder="Seu nome" required>
@@ -305,7 +348,6 @@ footer {
       <p><strong>Email:</strong> jbcontabilidade23@gmail.com</p>
       <p><strong>Instagram:</strong> @jbassessoria_contabil</p>
     </div>
-
   </div>
 </section>
 
@@ -320,6 +362,33 @@ footer {
 <a class="instagram" href="https://instagram.com/jbassessoria_contabil">
   <img src="https://cdn-icons-png.flaticon.com/512/733/733558.png">
 </a>
+
+<script>
+// =================== SCROLL ANIMADO ===================
+const sections = document.querySelectorAll('section');
+const options = { threshold: 0.2 };
+
+const observer = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, options);
+
+sections.forEach(section => observer.observe(section));
+
+// =================== MENU ESCURO AO ROLAR ===================
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  if(window.scrollY > 80){
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+});
+</script>
 
 </body>
 </html>
