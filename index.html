@@ -1034,10 +1034,10 @@ function submitContact(e) {
 
   var data = new FormData(form);
 
-  fetch('https://api.web3forms.com/submit', {
-    method: 'POST',
+  fetch 'https://api.web3forms.com/submit'{
+    method: 'POST'
     body: data
-  })
+  };
   .then(function(res){ return res.json(); })
   .then(function(json){
     document.getElementById('modal-sending').classList.remove('visible');
