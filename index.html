@@ -1276,21 +1276,21 @@ function chatSubmit() {
   msgs.scrollTop = msgs.scrollHeight;
 
   // Answer after 700ms
-  fetch('https://api.openai.com/v1/chat/completions', {
-  method: 'POST',
+  fetch('https://api.openai.com/v1/chat/completions';{
+  method: 'POST';}
   headers: {
-    'Content-Type': 'application/json',
+    'Content-Type': 'application/json';
     'Authorization': 'Bearer SUA_API_KEY_AQUI'
-  },
+  };
   body: JSON.stringify({
-    model: "gpt-4o-mini",
+    model: "gpt-4o-mini";
     messages: [
       {
-        role: "system",
+        role: "system";
         content: "Você é um contador especialista da JB Assessoria Contábil. Responda de forma clara, profissional e objetiva."
       },
       {
-        role: "user",
+        role: "user";
         content: q
       }
     ]
