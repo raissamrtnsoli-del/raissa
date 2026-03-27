@@ -1,24 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <style>
-#float-contact-btn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #2a9d8f;
-  border: none;
-  border-radius: 50%;
-  width: 56px;
-  height: 56px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  opacity: 1;
-  z-index: 999;
-}
-</style>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>JB Contabilidade — Assessoria Contábil Digital</title>
@@ -35,6 +17,23 @@
     *, *::before, *::after { font-family: 'Inter', sans-serif; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
 
+    #float-contact-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #2a9d8f;
+  border: none;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 1;
+  z-index: 999;
+}
+    
     /* ── Keyframes ─────────────────────────────────────────────── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(28px); }
@@ -1318,7 +1317,6 @@ function chatSubmit() {
   botBubble.innerHTML = "Erro ao responder. Tente novamente.";
 
   msgs.appendChild(botBubble);
-});
    msgs.scrollTop = msgs.scrollHeight;
 })
 .catch(function(){
@@ -1333,8 +1331,7 @@ function chatSubmit() {
       'Falar com especialista no WhatsApp</a>';
     msgs.appendChild(botBubble);
     msgs.scrollTop = msgs.scrollHeight;
-  }, 700);
-}
+ , 700;}
 </script>
 
 </body>
