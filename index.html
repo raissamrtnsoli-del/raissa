@@ -1,1267 +1,157 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JB Contabilidade — Assessoria Contábil Digital</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JB Assessoria Contábil</title>
 
-  <!-- Tailwind Play CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
+<!-- SEO -->
+<meta name="description" content="Contabilidade profissional em Araxá. Abertura de empresas, MEI, Simples Nacional e mais.">
 
-  <!-- Inter font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
 
-  <style>
-    *, *::before, *::after { font-family: 'Inter', sans-serif; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+<style>
+body { background:#0b0f1a; color:white; }
 
-    /* ── Keyframes ─────────────────────────────────────────────── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(28px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to   { opacity: 1; }
-    }
-    @keyframes scaleIn {
-      from { opacity: 0; transform: scale(0.95) translateY(14px); }
-      to   { opacity: 1; transform: scale(1) translateY(0); }
-    }
-    @keyframes pulseDot {
-      0%, 100% { opacity: 1; }
-      50%       { opacity: 0.4; }
-    }
-    @keyframes slideLeft {
-      from { opacity: 0; transform: translate(20px, 10px); }
-      to   { opacity: 1; transform: translate(0, 0); }
-    }
-    @keyframes slideRight {
-      from { opacity: 0; transform: translate(-10px, -10px); }
-      to   { opacity: 1; transform: translate(0, 0); }
-    }
-    @keyframes typingBounce {
-      0%, 60%, 100% { transform: translateY(0); opacity: 0.35; }
-      30%            { transform: translateY(-6px); opacity: 1; }
-    }
-    @keyframes floatBtn {
-      0%, 100% { transform: translateY(0); }
-      50%       { transform: translateY(-4px); }
-    }
+/* MENU */
+#navbar { background:#0b0f1a; }
 
-    /* ── Hero animations ───────────────────────────────────────── */
-    .hero-badge   { animation: fadeUp 0.55s cubic-bezier(.22,1,.36,1) 0.05s both; }
-    .hero-h1      { animation: fadeUp 0.55s cubic-bezier(.22,1,.36,1) 0.13s both; }
-    .hero-p       { animation: fadeUp 0.55s cubic-bezier(.22,1,.36,1) 0.21s both; }
-    .hero-btns    { animation: fadeUp 0.55s cubic-bezier(.22,1,.36,1) 0.29s both; }
-    .hero-stats   { animation: fadeUp 0.55s cubic-bezier(.22,1,.36,1) 0.37s both; }
-    .hero-card    { animation: fadeUp 0.70s cubic-bezier(.22,1,.36,1) 0.20s both; }
-    .badge-bottom { animation: slideLeft  0.60s cubic-bezier(.22,1,.36,1) 0.50s both; }
-    .badge-top    { animation: slideRight 0.60s cubic-bezier(.22,1,.36,1) 0.65s both; }
+/* CHAT */
+#chat-input {
+  background:#1a1f2e;
+  color:white;
+}
 
-    /* ── Scroll reveal ─────────────────────────────────────────── */
-    .reveal {
-      opacity: 0; transform: translateY(28px);
-      transition: opacity 0.55s cubic-bezier(.22,1,.36,1), transform 0.55s cubic-bezier(.22,1,.36,1);
-    }
-    .reveal.d1 { transition-delay: 0.08s; }
-    .reveal.d2 { transition-delay: 0.16s; }
-    .reveal.d3 { transition-delay: 0.24s; }
-    .reveal.visible { opacity: 1; transform: none; }
+#chat-input::placeholder {
+  color:rgba(255,255,255,0.4);
+}
 
-    /* ── Modal ─────────────────────────────────────────────────── */
-    #modal-overlay {
-      display: none; position: fixed; inset: 0; z-index: 100;
-      align-items: center; justify-content: center; padding: 1rem;
-      background: rgba(2,14,18,0.82); backdrop-filter: blur(10px);
-    }
-    #modal-overlay.open { display: flex; animation: fadeIn 0.2s ease both; }
-    #modal-card { animation: scaleIn 0.3s cubic-bezier(.22,1,.36,1) both; }
-    #modal-sent { display: none; }
-    #modal-sent.visible { display: block; }
-    #modal-form-body.hidden { display: none; }
-    #modal-sending { display: none; }
-    #modal-sending.visible { display: flex; }
+/* BOTÃO CENTRAL */
+#central-btn {
+  position:fixed;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#2a9d8f;
+  padding:14px 22px;
+  border-radius:30px;
+  font-weight:600;
+  box-shadow:0 10px 25px rgba(0,0,0,0.3);
+  z-index:999;
+}
 
-    /* ── Mobile nav ────────────────────────────────────────────── */
-    #mobile-nav { display: none; }
-    #mobile-nav.open { display: flex; }
-
-    /* ── Suggestion pills ──────────────────────────────────────── */
-    .pill {
-      display: flex; align-items: center; gap: 12px;
-      width: 100%; text-align: left; font-size: 0.875rem;
-      padding: 10px 18px; border-radius: 9999px; cursor: pointer;
-      border: 1px solid rgba(255,255,255,0.09);
-      background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.6);
-      transition: all 0.2s ease;
-    }
-    .pill:hover {
-      background: rgba(42,157,143,0.22); border-color: rgba(42,157,143,0.55);
-      color: #a7f3ec; transform: translateX(4px);
-      box-shadow: 0 0 0 3px rgba(42,157,143,0.18);
-    }
-    .pill .arrow { color: rgba(255,255,255,0.25); transition: all 0.2s ease; flex-shrink: 0; }
-    .pill:hover .arrow { color: #2a9d8f; }
-    .pill.hidden-pill { display: none; }
-
-    /* ── Chat messages ─────────────────────────────────────────── */
-    #chat-messages {
-      max-height: 260px; overflow-y: auto; display: none;
-      flex-direction: column; gap: 10px; padding: 14px 20px;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      scroll-behavior: smooth;
-    }
-    #chat-messages.active { display: flex; }
-    #chat-messages::-webkit-scrollbar { width: 4px; }
-    #chat-messages::-webkit-scrollbar-track { background: transparent; }
-    #chat-messages::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 2px; }
-    .bubble-user {
-      align-self: flex-end; max-width: 85%;
-      background: rgba(42,157,143,0.25); border: 1px solid rgba(42,157,143,0.4);
-      color: rgba(255,255,255,0.92); padding: 9px 15px;
-      border-radius: 18px 18px 4px 18px; font-size: 13px; line-height: 1.5;
-    }
-    .bubble-bot {
-      align-self: flex-start; max-width: 92%;
-      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
-      color: rgba(255,255,255,0.78); padding: 11px 15px;
-      border-radius: 18px 18px 18px 4px; font-size: 13px; line-height: 1.6;
-    }
-    .bubble-bot strong { color: rgba(255,255,255,0.95); }
-    .bubble-bot a { color: #2a9d8f; text-decoration: underline; }
-    .typing-wrap {
-      display: flex; align-items: center; gap: 5px; padding: 10px 15px;
-      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 18px 18px 18px 4px; width: fit-content;
-    }
-    .typing-dot {
-      width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.4);
-      animation: typingBounce 1.2s ease-in-out infinite;
-    }
-    .typing-dot:nth-child(2) { animation-delay: 0.2s; }
-    .typing-dot:nth-child(3) { animation-delay: 0.4s; }
-    #chat-suggestions-wrap { transition: all 0.3s ease; }
-
-    /* ── Hero card interactive ──────────────────────────────────── */
-    #hero-tilt-wrap {
-      transition: transform 0.08s ease;
-      transform-style: preserve-3d;
-      will-change: transform;
-    }
-    .stat-cell {
-      transition: all 0.2s ease; cursor: default;
-      border-radius: 16px; padding: 16px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-    .stat-cell:hover {
-      background: rgba(255,255,255,0.11) !important;
-      border-color: rgba(255,255,255,0.15) !important;
-      transform: translateY(-2px) scale(1.02);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-    }
-    .chart-bar-wrap { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; position: relative; }
-    .chart-bar {
-      width: 100%; border-radius: 2px; transition: all 0.2s ease; cursor: pointer;
-      position: relative;
-    }
-    .chart-bar:hover { filter: brightness(1.5); transform: scaleY(1.06); transform-origin: bottom; }
-    .chart-bar-label {
-      position: absolute; bottom: calc(100% + 4px); left: 50%; transform: translateX(-50%);
-      background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.85);
-      font-size: 9px; padding: 2px 5px; border-radius: 4px; white-space: nowrap;
-      opacity: 0; pointer-events: none; transition: opacity 0.15s ease;
-    }
-    .chart-bar:hover .chart-bar-label { opacity: 1; }
-    .ai-nudge-wrap { transition: all 0.2s ease; cursor: default; }
-    .ai-nudge-wrap:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(42,157,143,0.25); }
-
-    /* ── Google reviews in hero ────────────────────────────────── */
-    #review-ticker { overflow: hidden; }
-    .review-slide { display: none; }
-    .review-slide.active { display: block; animation: fadeIn 0.4s ease both; }
-
-    /* ── Why cards ─────────────────────────────────────────────── */
-    .why-card { transition: box-shadow 0.3s ease, transform 0.3s ease; box-shadow: 0 4px 24px rgba(0,0,0,0.04); }
-    .why-card:hover { box-shadow: 0 20px 60px rgba(0,0,0,0.12); transform: translateY(-4px); }
-
-    /* ── Service items ─────────────────────────────────────────── */
-    .svc-item { transition: transform 0.2s ease; }
-    .svc-item:hover { transform: translateX(4px); }
-
-    /* ── Floating buttons ──────────────────────────────────────── */
-    .fab { transition: transform 0.2s ease; }
-    .fab:hover { transform: scale(1.1); }
-
-    /* ── Floating contact button ───────────────────────────────── */
-    #float-contact-btn {
-      position: fixed; bottom: 168px; right: 24px; z-index: 50;
-      width: 56px; height: 56px; border-radius: 50%;
-      background: #043a49; border: 2px solid rgba(42,157,143,0.5);
-      box-shadow: 0 8px 28px rgba(4,58,73,0.45);
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; opacity: 0; transform: translateY(12px) scale(0.9);
-      transition: opacity 0.3s ease, transform 0.3s ease, background 0.2s ease;
-      pointer-events: none;
-    }
-    #float-contact-btn.visible {
-      opacity: 1; transform: translateY(0) scale(1); pointer-events: auto;
-      animation: floatBtn 3s ease-in-out infinite;
-    }
-    #float-contact-btn:hover { background: #2a9d8f; border-color: #2a9d8f; animation: none; transform: scale(1.12) !important; }
-    #float-contact-btn-tooltip {
-      position: absolute; right: 68px; top: 50%; transform: translateY(-50%);
-      background: #0d1f23; color: #fff; font-size: 12px; font-weight: 600;
-      padding: 6px 12px; border-radius: 8px; white-space: nowrap;
-      opacity: 0; pointer-events: none; transition: opacity 0.2s ease;
-    }
-    #float-contact-btn:hover #float-contact-btn-tooltip { opacity: 1; }
-
-    /* ── Nav links ─────────────────────────────────────────────── */
-    .nav-link { color: rgba(255,255,255,0.65); transition: color 0.2s ease; }
-    .nav-link:hover { color: #fff; }
-
-    /* ── Pulse dot ─────────────────────────────────────────────── */
-    .pulse-dot { animation: pulseDot 2s ease-in-out infinite; }
-
-    /* ── Focus inputs ──────────────────────────────────────────── */
-    input:focus, textarea:focus { outline: none; border-color: #2a9d8f !important; background: #fff !important; }
-  </style>
+/* PERFORMANCE */
+img { loading:lazy; }
+</style>
 </head>
 
-<body style="background:#fffef7; margin:0; padding:0; -webkit-font-smoothing:antialiased;">
+<body>
 
-<!-- ═══════════════════════════════════════════════════════════
-     CONTACT MODAL
-     ─ Formulário envia diretamente para o e-mail da empresa
-       via Web3Forms (sem o cliente abrir o próprio e-mail).
-     ─ Obtenha sua chave GRATUITA em: https://web3forms.com
-       Coloque sua chave no campo access_key abaixo.
-═══════════════════════════════════════════════════════════ -->
-<div id="modal-overlay" role="dialog" aria-modal="true" aria-label="Fale Conosco">
-  <div id="modal-card" class="relative w-full max-w-lg rounded-[32px] overflow-hidden"
-       style="background:#fffef7; box-shadow:0 40px 100px rgba(0,0,0,0.35);">
+<!-- NAVBAR -->
+<header id="navbar" class="fixed w-full top-0 z-50 p-4 flex justify-between items-center">
+  <img src="https://raw.githubusercontent.com/SEU-USUARIO/SEU-REPO/main/logo.png" alt="Logo" class="h-10">
+</header>
 
-    <!-- Header -->
-    <div class="relative overflow-hidden px-8 pt-8 pb-9" style="background:#043a49;">
-      <div class="absolute rounded-full opacity-[0.15]"
-           style="width:144px;height:144px;top:-40px;right:-40px;background:#2a9d8f;"></div>
-      <button onclick="closeModal()" aria-label="Fechar"
-              class="absolute top-5 right-5 w-8 h-8 rounded-full flex items-center justify-center transition-colors"
-              style="background:rgba(255,255,255,0.1);"
-              onmouseenter="this.style.background='rgba(255,255,255,0.2)'"
-              onmouseleave="this.style.background='rgba(255,255,255,0.1)'">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round">
-          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-        </svg>
-      </button>
-      <p class="text-xs uppercase tracking-widest mb-2" style="color:rgba(255,255,255,0.5);">Fale Conosco</p>
-      <h2 class="font-bold text-2xl tracking-tight text-white">Envie sua dúvida para a JB</h2>
-      <p class="text-sm mt-1.5" style="color:rgba(255,255,255,0.5);">Responderemos pelo e-mail ou WhatsApp em até 24h.</p>
-    </div>
-
-    <!-- Enviando... -->
-    <div id="modal-sending" class="px-8 py-10 items-center justify-center gap-3">
-      <div class="typing-wrap" style="background:rgba(4,58,73,0.08);border-color:rgba(4,58,73,0.15);">
-        <div class="typing-dot" style="background:#2a9d8f;"></div>
-        <div class="typing-dot" style="background:#2a9d8f;"></div>
-        <div class="typing-dot" style="background:#2a9d8f;"></div>
-      </div>
-      <span class="text-sm font-medium" style="color:#043a49;">Enviando mensagem…</span>
-    </div>
-
-    <!-- Confirmação -->
-    <div id="modal-sent" class="px-8 py-12 text-center">
-      <div class="w-16 h-16 mx-auto rounded-2xl flex items-center justify-center mb-4"
-           style="background:rgba(42,157,143,0.12);">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#2a9d8f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="20 6 9 17 4 12"/>
-        </svg>
-      </div>
-      <h3 class="font-bold text-xl mb-2" style="color:#1a1a1a;">Mensagem enviada!</h3>
-      <p class="text-sm leading-relaxed mb-6 text-gray-500">Recebemos sua mensagem e responderemos em breve.</p>
-      <button onclick="closeModal()" class="text-white rounded-full px-8 py-3 font-semibold text-sm hover:opacity-90 transition-all"
-              style="background:#2a9d8f;">Fechar</button>
-    </div>
-
-    <!-- Erro -->
-    <div id="modal-error" class="hidden px-8 py-6 text-center">
-      <p class="text-sm text-red-500 mb-3">Falha no envio. Tente novamente ou entre em contato pelo WhatsApp.</p>
-      <button onclick="document.getElementById('modal-error').classList.add('hidden');document.getElementById('modal-form-body').classList.remove('hidden');"
-              class="text-white rounded-full px-6 py-2 font-semibold text-sm" style="background:#2a9d8f;">Tentar novamente</button>
-    </div>
-
-    <!-- Formulário -->
-    <form id="modal-form-body" class="px-8 py-8 space-y-4" onsubmit="submitContact(event)">
-      <!-- ⚠️ CONFIGURAÇÃO: cole aqui a sua chave do Web3Forms (https://web3forms.com) -->
-      <input type="hidden" name="access_key" value="SUA_CHAVE_WEB3FORMS_AQUI" />
-      <input type="hidden" name="subject" value="Novo contato via site JB Contabilidade" />
-      <input type="hidden" name="from_name" value="Site JB Contabilidade" />
-      <input type="hidden" name="redirect" value="false" />
-
-      <!-- Nome -->
-      <div>
-        <label class="block text-xs font-semibold uppercase tracking-wider mb-1.5" style="color:#1a1a1a;">Nome completo</label>
-        <div class="relative">
-          <div class="absolute left-4 top-1/2 -translate-y-1/2" style="color:#9ca3af;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
-            </svg>
-          </div>
-          <input type="text" name="nome" id="f-nome" required placeholder="Seu nome"
-                 class="w-full border rounded-xl text-sm transition-all"
-                 style="background:#f9fafb;border-color:#e5e7eb;color:#1a1a1a;padding:14px 16px 14px 44px;" />
-        </div>
-      </div>
-
-      <!-- Telefone -->
-      <div>
-        <label class="block text-xs font-semibold uppercase tracking-wider mb-1.5" style="color:#1a1a1a;">Telefone / WhatsApp</label>
-        <div class="relative">
-          <div class="absolute left-4 top-1/2 -translate-y-1/2" style="color:#9ca3af;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.61 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 5.49 5.49l.98-.98a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-            </svg>
-          </div>
-          <input type="tel" name="telefone" id="f-tel" placeholder="(00) 00000-0000"
-                 class="w-full border rounded-xl text-sm transition-all"
-                 style="background:#f9fafb;border-color:#e5e7eb;color:#1a1a1a;padding:14px 16px 14px 44px;" />
-        </div>
-      </div>
-
-      <!-- Email -->
-      <div>
-        <label class="block text-xs font-semibold uppercase tracking-wider mb-1.5" style="color:#1a1a1a;">E-mail</label>
-        <div class="relative">
-          <div class="absolute left-4 top-1/2 -translate-y-1/2" style="color:#9ca3af;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
-            </svg>
-          </div>
-          <input type="email" name="email" id="f-email" required placeholder="seu@email.com"
-                 class="w-full border rounded-xl text-sm transition-all"
-                 style="background:#f9fafb;border-color:#e5e7eb;color:#1a1a1a;padding:14px 16px 14px 44px;" />
-        </div>
-      </div>
-
-      <!-- Mensagem -->
-      <div>
-        <label class="block text-xs font-semibold uppercase tracking-wider mb-1.5" style="color:#1a1a1a;">Sua dúvida</label>
-        <div class="relative">
-          <div class="absolute left-4 top-4" style="color:#9ca3af;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
-            </svg>
-          </div>
-          <textarea name="mensagem" id="f-msg" required rows="4" placeholder="Descreva sua dúvida ou situação..."
-                    class="w-full border rounded-xl text-sm transition-all resize-none"
-                    style="background:#f9fafb;border-color:#e5e7eb;color:#1a1a1a;padding:14px 16px 14px 44px;"></textarea>
-        </div>
-      </div>
-
-      <button type="submit" class="w-full text-white rounded-full font-bold text-sm hover:opacity-90 transition-all flex items-center justify-center gap-2"
-              style="background:#2a9d8f;padding:16px;">
-        Enviar mensagem
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="9 18 15 12 9 6"/>
-        </svg>
-      </button>
-      <p class="text-xs text-center text-gray-400">Mensagem enviada diretamente para a JB Contabilidade</p>
-    </form>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════════════════════
-     NAVBAR
-═══════════════════════════════════════════════════════════ -->
-<nav id="navbar" class="fixed inset-x-0 top-0 z-50 transition-all duration-300" style="background:#043a49;">
-  <div class="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
-    <img src="./images/logo-jb-dark.png" alt="JB Contabilidade" class="h-16 object-contain"
-         style="mix-blend-mode:screen;" />
-    <div class="hidden md:flex items-center gap-8">
-      <a href="#inicio" class="nav-link text-sm font-medium tracking-wide">Início</a>
-      <a href="#porque" class="nav-link text-sm font-medium tracking-wide">Por que JB?</a>
-      <a href="#servicos" class="nav-link text-sm font-medium tracking-wide">Serviços</a>
-      <a href="#cta" class="nav-link text-sm font-medium tracking-wide">Contato</a>
-      <button onclick="openModal()"
-              class="text-white rounded-full text-sm font-semibold transition-all"
-              style="border:1px solid rgba(255,255,255,0.25);padding:10px 24px;"
-              onmouseenter="this.style.background='rgba(255,255,255,0.1)'"
-              onmouseleave="this.style.background='transparent'">
-        Fale Conosco
-      </button>
-    </div>
-    <button onclick="toggleMobile()" class="md:hidden" style="color:rgba(255,255,255,0.7);" id="ham-btn">
-      <svg id="ham-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-        <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
-      </svg>
-      <svg id="x-icon" class="hidden" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-      </svg>
-    </button>
-  </div>
-  <div id="mobile-nav" class="md:hidden flex-col gap-4 border-t px-6 py-4"
-       style="background:#032f3b;border-color:rgba(255,255,255,0.1);">
-    <a href="#inicio" onclick="closeMobile()" class="text-sm font-medium py-1" style="color:rgba(255,255,255,0.7);">Início</a>
-    <a href="#porque" onclick="closeMobile()" class="text-sm font-medium py-1" style="color:rgba(255,255,255,0.7);">Por que JB?</a>
-    <a href="#servicos" onclick="closeMobile()" class="text-sm font-medium py-1" style="color:rgba(255,255,255,0.7);">Serviços</a>
-    <a href="#cta" onclick="closeMobile()" class="text-sm font-medium py-1" style="color:rgba(255,255,255,0.7);">Contato</a>
-    <button onclick="closeMobile();openModal();" class="text-white rounded-full text-sm font-semibold text-center"
-            style="border:1px solid rgba(255,255,255,0.25);padding:10px 24px;">
-      Fale Conosco
-    </button>
-  </div>
-</nav>
-
-<!-- ═══════════════════════════════════════════════════════════
-     HERO SECTION — card interativo com avaliações do Google
-═══════════════════════════════════════════════════════════ -->
-<section id="inicio" class="min-h-screen flex items-center pt-28 pb-20" style="background:#fffef7;">
-  <div class="max-w-6xl mx-auto px-6 w-full grid md:grid-cols-2 gap-20 items-center">
-
-    <!-- Left copy -->
-    <div>
-      <div class="hero-badge inline-flex items-center gap-2 rounded-full px-4 py-2 mb-8 text-sm font-medium"
-           style="background:rgba(42,157,143,0.08);color:#2a9d8f;">
-        <div class="w-2 h-2 rounded-full" style="background:#2a9d8f;"></div>
-        Contabilidade Digital · Araxá-MG para todo o Brasil
-      </div>
-      <h1 class="hero-h1 font-bold mb-6 tracking-tight" style="font-size:clamp(2.5rem,5vw,3.75rem);line-height:1.08;color:#0d1f23;">
-        Assessoria contábil completa e
-        <span style="color:#2a9d8f;"> 100% online</span>
-      </h1>
-      <p class="hero-p text-lg leading-relaxed mb-10" style="color:#6b7280;">
-        A JB é uma empresa de contabilidade voltada ao atendimento virtual de forma simples e descomplicada.
-        Uma empresa de Araxá-MG para todo o Brasil, oferecendo soluções contábeis completas e eficientes.
-      </p>
-      <div class="hero-btns flex flex-col sm:flex-row gap-4">
-        <a href="#porque" class="inline-flex items-center justify-center gap-2 text-white rounded-full px-8 py-4 font-bold text-sm hover:opacity-90 transition-all"
-           style="background:#2a9d8f;box-shadow:0 12px 32px rgba(42,157,143,0.4);">
-          Saber mais
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-          </svg>
-        </a>
-        <a href="https://wa.me/5534988374643" target="_blank" rel="noopener"
-           class="inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 font-semibold text-sm transition-all"
-           style="border:2px solid #e5e7eb;color:#0d1f23;"
-           onmouseenter="this.style.background='#f9fafb';this.style.borderColor='#d1d5db'"
-           onmouseleave="this.style.background='transparent';this.style.borderColor='#e5e7eb'">
-          Falar pelo WhatsApp
-        </a>
-      </div>
-      <div class="hero-stats mt-14 flex items-center gap-12">
-        <div>
-          <div class="text-2xl font-bold tracking-tight" style="color:#2a9d8f;">2023</div>
-          <div class="text-xs mt-0.5" style="color:#9ca3af;">Fundada em</div>
-        </div>
-        <div>
-          <div class="text-2xl font-bold tracking-tight" id="stat-clientes" style="color:#2a9d8f;">200+</div>
-          <div class="text-xs mt-0.5" style="color:#9ca3af;">Clientes atendidos</div>
-        </div>
-        <div>
-          <div class="text-2xl font-bold tracking-tight" style="color:#2a9d8f;">100%</div>
-          <div class="text-xs mt-0.5" style="color:#9ca3af;">Online</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Right — fintech card INTERATIVO -->
-    <div class="flex justify-center">
-      <div class="relative w-full select-none" style="max-width:28rem;">
-        <!-- Glow -->
-        <div class="absolute rounded-[56px]" style="inset:-24px;filter:blur(48px);opacity:0.2;background:#2a9d8f;pointer-events:none;"></div>
-
-        <!-- Tilt wrapper — JS aplica perspectiva 3D aqui -->
-        <div id="hero-tilt-wrap" class="hero-card rounded-[32px] overflow-visible" style="cursor:default;">
-          <!-- Main dark card -->
-          <div class="relative rounded-[32px] p-7 overflow-hidden" style="background:#043a49;">
-            <!-- Decorative blob -->
-            <div class="absolute rounded-full" style="width:192px;height:192px;top:-48px;right:-48px;background:#2a9d8f;opacity:0.12;pointer-events:none;"></div>
-
-            <div class="relative" style="z-index:1;">
-              <!-- Header -->
-              <div class="flex items-center justify-between mb-7">
-                <div>
-                  <p class="text-xs uppercase tracking-widest mb-0.5" style="color:rgba(255,255,255,0.4);">Sua contabilidade</p>
-                  <p class="font-bold text-lg tracking-tight text-white">Painel JB</p>
-                </div>
-                <div class="w-10 h-10 rounded-2xl flex items-center justify-center" style="background:rgba(42,157,143,0.15);">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2a9d8f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/>
-                  </svg>
-                </div>
-              </div>
-
-              <!-- Stats grid -->
-              <div class="grid grid-cols-2 gap-3 mb-5">
-                <div class="stat-cell">
-                  <p class="text-[10px] uppercase tracking-wider mb-1" style="color:rgba(255,255,255,0.4);">Impostos em dia</p>
-                  <p class="font-bold text-sm" style="color:#2a9d8f;">✓ OK</p>
-                </div>
-                <div class="stat-cell">
-                  <p class="text-[10px] uppercase tracking-wider mb-1" style="color:rgba(255,255,255,0.4);">Simples Nacional</p>
-                  <p class="font-bold text-sm" style="color:#2a9d8f;">Ativo</p>
-                </div>
-                <div class="stat-cell">
-                  <p class="text-[10px] uppercase tracking-wider mb-1" style="color:rgba(255,255,255,0.4);">Folha de Pagamento</p>
-                  <p class="font-bold text-sm text-white">R$ 12.000</p>
-                </div>
-                <div class="stat-cell">
-                  <p class="text-[10px] uppercase tracking-wider mb-1" style="color:rgba(255,255,255,0.4);">Próx. Obrigação</p>
-                  <p class="font-bold text-sm text-white">15 Abr</p>
-                </div>
-              </div>
-
-              <!-- Mini chart -->
-              <div class="rounded-2xl p-4 mb-3" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);">
-                <p class="text-[10px] uppercase tracking-wider mb-3" style="color:rgba(255,255,255,0.35);">Faturamento — 2025</p>
-                <div class="flex items-end gap-1.5" style="height:48px;">
-                  <div class="chart-bar-wrap"><div class="chart-bar" data-month="Jan" style="height:45%;background:rgba(255,255,255,0.12);"><span class="chart-bar-label">Jan</span></div></div>
-                  <div class="chart-bar-wrap"><div class="chart-bar" data-month="Fev" style="height:62%;background:rgba(255,255,255,0.12);"><span class="chart-bar-label">Fev</span></div></div>
-                  <div class="chart-bar-wrap"><div class="chart-bar" data-month="Mar" style="height:50%;background:rgba(255,255,255,0.12);"><span class="chart-bar-label">Mar</span></div></div>
-                  <div class="chart-bar-wrap"><div class="chart-bar" data-month="Abr" style="height:78%;background:rgba(255,255,255,0.12);"><span class="chart-bar-label">Abr</span></div></div>
-                  <div class="chart-bar-wrap"><div class="chart-bar" data-month="Mai" style="height:66%;background:rgba(255,255,255,0.12);"><span class="chart-bar-label">Mai</span></div></div>
-                  <div class="chart-bar-wrap"><div class="chart-bar" data-month="Jun" style="height:82%;background:rgba(255,255,255,0.12);"><span class="chart-bar-label">Jun</span></div></div>
-                  <div class="chart-bar-wrap"><div class="chart-bar" data-month="Jul" style="height:70%;background:rgba(255,255,255,0.12);"><span class="chart-bar-label">Jul</span></div></div>
-                  <div class="chart-bar-wrap"><div class="chart-bar" data-month="Ago" style="height:88%;background:rgba(255,255,255,0.12);"><span class="chart-bar-label">Ago</span></div></div>
-                  <div class="chart-bar-wrap"><div class="chart-bar" data-month="Set" style="height:74%;background:rgba(255,255,255,0.12);"><span class="chart-bar-label">Set</span></div></div>
-                  <div class="chart-bar-wrap"><div class="chart-bar" data-month="Out" style="height:91%;background:rgba(42,157,143,0.6);"><span class="chart-bar-label">Out</span></div></div>
-                  <div class="chart-bar-wrap"><div class="chart-bar" data-month="Nov" style="height:80%;background:rgba(42,157,143,0.6);"><span class="chart-bar-label">Nov</span></div></div>
-                  <div class="chart-bar-wrap"><div class="chart-bar" data-month="Dez" style="height:95%;background:#2a9d8f;"><span class="chart-bar-label">Dez</span></div></div>
-                </div>
-              </div>
-
-              <!-- AI nudge -->
-              <div class="ai-nudge-wrap rounded-2xl p-3.5 flex items-center gap-3"
-                   style="background:rgba(42,157,143,0.08);border:1px solid rgba(42,157,143,0.18);">
-                <div class="w-7 h-7 rounded-xl flex items-center justify-center flex-shrink-0"
-                     style="background:rgba(42,157,143,0.3);">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2a9d8f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-                  </svg>
-                </div>
-                <p class="text-[11px] leading-relaxed" style="color:rgba(255,255,255,0.7);">
-                  Migrar para Simples Nacional pode economizar
-                  <span class="font-semibold" style="color:#2a9d8f;"> R$ 890/mês</span>
-                </p>
-              </div>
-
-              <!-- Avaliações do Google (ticker) — preenche via JS -->
-              <div id="review-ticker" class="mt-3 rounded-2xl p-3.5" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);min-height:58px;display:none;">
-                <div class="flex items-center gap-2 mb-1.5">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="#2a9d8f"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                  <span id="review-rating" class="text-[11px] font-bold" style="color:#2a9d8f;"></span>
-                  <span id="review-total" class="text-[10px]" style="color:rgba(255,255,255,0.35);"></span>
-                </div>
-                <div id="review-text" class="text-[11px] leading-relaxed" style="color:rgba(255,255,255,0.6);"></div>
-                <div id="review-author" class="text-[10px] mt-1 font-semibold" style="color:rgba(255,255,255,0.4);"></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Badge bottom-left: avaliações Google -->
-          <div class="badge-bottom absolute bg-white rounded-2xl px-4 py-3 flex items-center gap-3"
-               style="bottom:-16px;left:-16px;border:1px solid #f0efea;box-shadow:0 12px 32px rgba(0,0,0,0.12);cursor:pointer;"
-               onclick="window.open('https://share.google/SaAshitpP0a42PkUW','_blank')"
-               title="Ver avaliações no Google">
-            <div class="flex" style="margin-right:2px;">
-              <div class="w-7 h-7 rounded-full border-2 border-white flex items-center justify-center text-[11px] font-bold text-white" id="badge-av1" style="background:#2a9d8f;">M</div>
-              <div class="w-7 h-7 rounded-full border-2 border-white flex items-center justify-center text-[11px] font-bold text-white -ml-2" id="badge-av2" style="background:#043a49;">J</div>
-              <div class="w-7 h-7 rounded-full border-2 border-white flex items-center justify-center text-[11px] font-bold text-white -ml-2" id="badge-av3" style="background:#065a6e;">C</div>
-            </div>
-            <div>
-              <p class="text-xs font-semibold leading-none" id="badge-label" style="color:#1a1a1a;">200+ clientes</p>
-              <div class="flex gap-0.5 mt-1" id="badge-stars">
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="#2a9d8f"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="#2a9d8f"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="#2a9d8f"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="#2a9d8f"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="#2a9d8f"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              </div>
-            </div>
-          </div>
-
-          <!-- Badge top-right -->
-          <div class="badge-top absolute bg-white rounded-2xl px-4 py-3 flex items-center gap-2"
-               style="top:-16px;right:-16px;border:1px solid #f0efea;box-shadow:0 12px 32px rgba(0,0,0,0.12);">
-            <div class="w-7 h-7 rounded-xl flex items-center justify-center" style="background:rgba(42,157,143,0.12);">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2a9d8f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-              </svg>
-            </div>
-            <div>
-              <p class="text-xs font-semibold leading-none" style="color:#1a1a1a;">100% Seguro</p>
-              <p class="text-[10px] text-gray-400">Dados protegidos</p>
-            </div>
-          </div>
-        </div><!-- /hero-tilt-wrap -->
-      </div>
-    </div>
+<!-- HERO -->
+<section class="h-screen flex items-center justify-center text-center px-4">
+  <div>
+    <h1 class="text-4xl font-bold mb-4">Contabilidade inteligente para sua empresa</h1>
+    <p class="opacity-70">Atendimento rápido, humano e eficiente</p>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════
-     WHY SECTION
-═══════════════════════════════════════════════════════════ -->
-<section id="porque" class="py-28" style="background:#fffef7;">
-  <div class="max-w-6xl mx-auto px-6">
-    <div class="reveal mb-16">
-      <div class="inline-flex items-center gap-2 rounded-full px-4 py-2 mb-6 text-sm font-medium"
-           style="background:rgba(4,58,73,0.07);color:#043a49;">
-        <div class="w-2 h-2 rounded-full" style="background:#043a49;"></div>
-        Nossos diferenciais
-      </div>
-      <h2 class="font-bold tracking-tight" style="font-size:clamp(2rem,4vw,3rem);color:#0d1f23;">Por que JB?</h2>
-    </div>
-    <div class="grid md:grid-cols-3 gap-5">
-      <div class="why-card reveal d1 bg-white border rounded-[32px] p-8" style="border-color:rgba(229,231,235,0.8);">
-        <div class="w-12 h-12 rounded-2xl flex items-center justify-center mb-6" style="background:rgba(42,157,143,0.08);color:#2a9d8f;">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
-          </svg>
-        </div>
-        <h3 class="text-lg font-bold mb-3 tracking-tight" style="color:#0d1f23;">Abertura de empresa</h3>
-        <p class="text-sm leading-relaxed text-gray-500">Profissionais experientes que te orientam a melhor forma de começar um negócio.</p>
-      </div>
-      <div class="why-card reveal d2 bg-white border rounded-[32px] p-8" style="border-color:rgba(229,231,235,0.8);">
-        <div class="w-12 h-12 rounded-2xl flex items-center justify-center mb-6" style="background:rgba(4,58,73,0.07);color:#043a49;">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
-          </svg>
-        </div>
-        <h3 class="text-lg font-bold mb-3 tracking-tight" style="color:#0d1f23;">Problemas com impostos</h3>
-        <p class="text-sm leading-relaxed text-gray-500">Responde suas dúvidas sobre impostos e sugere ações para a sua situação real.</p>
-      </div>
-      <div class="why-card reveal d3 bg-white border rounded-[32px] p-8" style="border-color:rgba(229,231,235,0.8);">
-        <div class="w-12 h-12 rounded-2xl flex items-center justify-center mb-6" style="background:rgba(42,157,143,0.08);color:#2a9d8f;">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-          </svg>
-        </div>
-        <h3 class="text-lg font-bold mb-3 tracking-tight" style="color:#0d1f23;">Assessoria completa</h3>
-        <p class="text-sm leading-relaxed text-gray-500">Não precisa ter medo da nova tributação! Assessoria completa para te orientar.</p>
-      </div>
-    </div>
-  </div>
+<!-- GOOGLE REVIEWS (SOMENTE AVALIAÇÕES) -->
+<section class="py-20 text-center">
+  <h2 class="text-2xl mb-6">Avaliações no Google</h2>
+  <div id="reviews"></div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════
-     CHAT / AI SECTION — responde imediatamente
-═══════════════════════════════════════════════════════════ -->
-<section id="chat" class="py-28 relative overflow-hidden" style="background:#043a49;">
-  <div class="absolute inset-0" style="background-image:radial-gradient(ellipse 70% 55% at 75% 45%, rgba(42,157,143,0.13) 0%, transparent 65%), radial-gradient(ellipse 55% 70% at 5% 85%, rgba(6,90,110,0.45) 0%, transparent 55%);pointer-events:none;"></div>
-  <div class="absolute inset-0" style="opacity:0.035;background-image:url(\"data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='1' fill='white'/%3E%3C/svg%3E\");pointer-events:none;"></div>
-
-  <div class="relative max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center" style="z-index:1;">
-    <!-- Left copy -->
-    <div>
-      <div class="reveal inline-flex items-center gap-2 rounded-full px-4 py-2 mb-8"
-           style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);">
-        <div class="w-2 h-2 rounded-full" style="background:#2a9d8f;"></div>
-        <span class="text-sm font-medium" style="color:rgba(255,255,255,0.75);">Respostas da JB</span>
-      </div>
-      <h2 class="reveal font-bold tracking-tight mb-6" style="font-size:clamp(2rem,4vw,3rem);color:#fff;line-height:1.1;">
-        Você tem perguntas,
-        <span style="color:#2a9d8f;"> a JB tem as respostas</span>
-      </h2>
-      <p class="reveal text-lg leading-relaxed mb-10" style="color:rgba(255,255,255,0.55);">
-        Conte com nossos especialistas para esclarecer todas as suas dúvidas contábeis. Atendimento rápido e personalizado.
-      </p>
-      <a href="https://wa.me/5534988374643" target="_blank" rel="noopener"
-         class="reveal inline-flex items-center gap-3 text-white font-semibold text-sm rounded-full hover:opacity-90 transition-all"
-         style="background:#25D366;box-shadow:0 8px 24px rgba(37,211,102,0.3);padding:14px 28px;">
-        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-          <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm.029 18.88a9.93 9.93 0 01-4.756-1.215L3 18.75l1.124-4.143A9.924 9.924 0 012.07 9.93C2.07 4.458 6.528 0 12 0s9.93 4.458 9.93 9.93c0 5.471-4.458 9.93-9.901 9.95z" fill-rule="evenodd" clip-rule="evenodd"/>
-        </svg>
-        Perguntar agora
-      </a>
-    </div>
-
-    <!-- Right — chat card interativo -->
-    <div class="reveal">
-      <div class="rounded-[28px] overflow-hidden"
-           style="background:rgba(255,255,255,0.045);border:1px solid rgba(255,255,255,0.1);backdrop-filter:blur(24px);">
-
-        <!-- Chat header -->
-        <div class="flex items-center gap-3 px-6 py-4" style="border-bottom:1px solid rgba(255,255,255,0.1);">
-          <div class="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(42,157,143,0.35);">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2a9d8f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-            </svg>
-          </div>
-          <div class="flex-1">
-            <p class="text-sm font-semibold text-white leading-none">JB Assistente Contábil</p>
-            <p class="text-[11px] mt-0.5" style="color:rgba(255,255,255,0.4);">Especialista em contabilidade</p>
-          </div>
-          <div class="flex items-center gap-1.5">
-            <div class="w-2 h-2 rounded-full pulse-dot" style="background:#4ade80;"></div>
-            <span class="text-[11px] font-medium" style="color:rgba(74,222,128,0.8);">Online</span>
-          </div>
-        </div>
-
-        <!-- Chat messages (aparecem ao conversar) -->
-        <div id="chat-messages"></div>
-
-        <!-- Sugestões dinâmicas (filtram ao digitar) -->
-        <div id="chat-suggestions-wrap" class="p-5 space-y-2">
-          <p class="text-xs text-center mb-4 font-medium" style="color:rgba(255,255,255,0.3);">Clique numa sugestão ou digite sua pergunta abaixo</p>
-          <button class="pill suggestion-pill" data-text="Qual o melhor regime para a minha empresa?" onclick="chatSuggestionClick(this)">
-            <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
-            Qual o melhor regime para a minha empresa?
-          </button>
-          <button class="pill suggestion-pill" data-text="Por que pago tantos impostos?" onclick="chatSuggestionClick(this)">
-            <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
-            Por que pago tantos impostos?
-          </button>
-          <button class="pill suggestion-pill" data-text="Como consigo mudar para o Simples Nacional?" onclick="chatSuggestionClick(this)">
-            <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
-            Como consigo mudar para o Simples Nacional?
-          </button>
-          <button class="pill suggestion-pill" data-text="O que é necessário declarar?" onclick="chatSuggestionClick(this)">
-            <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
-            O que é necessário declarar?
-          </button>
-          <button class="pill suggestion-pill" data-text="Quem precisa fazer imposto de renda?" onclick="chatSuggestionClick(this)">
-            <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
-            Quem precisa fazer imposto de renda?
-          </button>
-        </div>
-
-        <!-- Input bar -->
-        <div class="px-5 pb-5">
-          <div class="flex items-center gap-3 rounded-full px-4 py-2.5"
-               style="background:rgba(255,255,255,0.09);border:1px solid rgba(255,255,255,0.13);">
-            <input id="chat-input" type="text" placeholder="Digite sua pergunta contábil…"
-                   class="flex-1 bg-transparent text-sm outline-none"
-                   style="color:#fff;"
-                   oninput="chatFilterSuggestions(this.value)"
-                   onkeydown="if(event.key==='Enter')chatSubmit()" />
-            <button onclick="chatSubmit()"
-                    class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 hover:scale-110 transition-transform"
-                    style="background:#2a9d8f;">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
-              </svg>
-            </button>
-          </div>
-          <p class="text-[10px] text-center mt-2.5" style="color:rgba(255,255,255,0.2);">
-            Dúvidas complexas? <a href="https://wa.me/5534988374643" target="_blank" style="color:#2a9d8f;text-decoration:underline;">Fale com um especialista no WhatsApp</a>
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
+<!-- CHAT COM IA REAL -->
+<section class="p-6 max-w-xl mx-auto">
+  <div id="chat-box" class="space-y-3 mb-4"></div>
+  <input id="chat-input" type="text" placeholder="Digite sua dúvida..." class="w-full p-3 rounded-lg">
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════
-     SERVICES SECTION
-═══════════════════════════════════════════════════════════ -->
-<section id="servicos" class="py-28 relative overflow-hidden"
-         style="background:linear-gradient(135deg,#032f3b 0%,#043a49 35%,#065a6e 60%,#043a49 80%,#032f3b 100%);">
-  <div class="absolute inset-0" style="background-image:url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\");pointer-events:none;"></div>
-  <div class="relative max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center" style="z-index:1;">
-    <div>
-      <div class="reveal inline-flex items-center gap-2 rounded-full px-4 py-2 mb-6 text-sm font-medium"
-           style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);">
-        <div class="w-2 h-2 rounded-full" style="background:#2a9d8f;"></div>
-        <span style="color:rgba(255,255,255,0.75);">Para todos os perfis</span>
-      </div>
-      <h2 class="reveal font-bold tracking-tight mb-6 text-white" style="font-size:clamp(2rem,4vw,3rem);line-height:1.1;">
-        Nós resolvemos os seus <span style="color:#2a9d8f;">problemas:</span>
-      </h2>
-      <p class="reveal text-lg leading-relaxed mb-8" style="color:rgba(255,255,255,0.55);">
-        Atendemos diferentes perfis de negócios com soluções sob medida para cada realidade tributária.
-      </p>
-      <a href="https://wa.me/5534988374643" target="_blank" rel="noopener"
-         class="reveal inline-flex items-center gap-2 text-white rounded-full px-8 py-4 font-semibold text-sm hover:opacity-90 transition-all"
-         style="background:#2a9d8f;box-shadow:0 10px 28px rgba(42,157,143,0.4);">
-        Falar com um especialista
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-        </svg>
-      </a>
-    </div>
-    <div class="flex flex-col gap-3">
-      <div class="svc-item reveal d1 flex items-center gap-5 rounded-2xl p-5" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.11);">
-        <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(42,157,143,0.3);">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2a9d8f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-        <span class="font-semibold text-white">Microempreendedor Individual</span>
-      </div>
-      <div class="svc-item reveal d2 flex items-center gap-5 rounded-2xl p-5" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.11);">
-        <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(42,157,143,0.3);">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2a9d8f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-        <span class="font-semibold text-white">Simples Nacional</span>
-      </div>
-      <div class="svc-item reveal d3 flex items-center gap-5 rounded-2xl p-5" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.11);">
-        <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(42,157,143,0.3);">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2a9d8f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-        <span class="font-semibold text-white">Lucro Presumido</span>
-      </div>
-      <div class="svc-item reveal flex items-center gap-5 rounded-2xl p-5" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.11);">
-        <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(42,157,143,0.3);">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2a9d8f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-        <span class="font-semibold text-white">Produtores Rurais</span>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- BOTÃO CENTRAL -->
+<button id="central-btn" onclick="openWhatsApp()">Tire suas dúvidas</button>
 
-<!-- ═══════════════════════════════════════════════════════════
-     CTA SECTION
-═══════════════════════════════════════════════════════════ -->
-<section id="cta" class="py-28 relative overflow-hidden" style="background:#043a49;">
-  <div class="absolute inset-0" style="background-image:radial-gradient(ellipse at center, rgba(42,157,143,0.13) 0%, transparent 68%);pointer-events:none;"></div>
-  <div class="relative max-w-3xl mx-auto px-6 text-center" style="z-index:1;">
-    <div class="reveal inline-flex items-center gap-2 rounded-full px-4 py-2 mb-8"
-         style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);">
-      <div class="w-2 h-2 rounded-full" style="background:#2a9d8f;"></div>
-      <span class="text-sm font-medium" style="color:rgba(255,255,255,0.75);">Comece agora</span>
-    </div>
-    <h2 class="reveal font-bold tracking-tight mb-8 text-white" style="font-size:clamp(2rem,4vw,3rem);line-height:1.1;">
-      Retome o controle da <span style="color:#2a9d8f;">sua contabilidade</span>
-    </h2>
-    <div class="reveal flex flex-col items-center gap-3 mb-12">
-      <div class="flex items-center gap-3">
-        <div class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style="background:rgba(42,157,143,0.3);">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#2a9d8f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-        <span class="text-base" style="color:rgba(255,255,255,0.75);">Contador Especializado</span>
-      </div>
-      <div class="flex items-center gap-3">
-        <div class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style="background:rgba(42,157,143,0.3);">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#2a9d8f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-        <span class="text-base" style="color:rgba(255,255,255,0.75);">Contábil Responsável</span>
-      </div>
-      <div class="flex items-center gap-3">
-        <div class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style="background:rgba(42,157,143,0.3);">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#2a9d8f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-        <span class="text-base" style="color:rgba(255,255,255,0.75);">Departamento Pessoal Alinhado</span>
-      </div>
-    </div>
-    <a href="https://wa.me/5534988374643" target="_blank" rel="noopener"
-       class="reveal inline-flex items-center gap-3 text-white rounded-full px-10 py-5 font-bold text-base hover:opacity-90 transition-all"
-       style="background:#2a9d8f;box-shadow:0 16px 40px rgba(42,157,143,0.45);">
-      Quero falar sobre a minha empresa
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-      </svg>
-    </a>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════
-     FOOTER
-═══════════════════════════════════════════════════════════ -->
-<footer class="pt-16 pb-8 px-6" style="background:#043a49;">
-  <div class="max-w-6xl mx-auto">
-    <div class="grid md:grid-cols-4 gap-10 mb-12">
-      <div>
-        <img src="./images/logo-jb-dark.png" alt="JB Contabilidade" class="h-20 object-contain mb-4" style="mix-blend-mode:screen;" />
-        <p class="text-sm leading-relaxed" style="color:rgba(255,255,255,0.35);">Assessoria e Consultoria Contábil. Araxá-MG para todo o Brasil.</p>
-      </div>
-      <div>
-        <h4 class="text-xs uppercase tracking-wider font-semibold mb-4" style="color:rgba(255,255,255,0.5);">Serviços</h4>
-        <ul class="space-y-2.5">
-          <li><span class="text-sm" style="color:rgba(255,255,255,0.45);">Abertura de Empresa</span></li>
-          <li><span class="text-sm" style="color:rgba(255,255,255,0.45);">Simples Nacional</span></li>
-          <li><span class="text-sm" style="color:rgba(255,255,255,0.45);">MEI</span></li>
-          <li><span class="text-sm" style="color:rgba(255,255,255,0.45);">Lucro Presumido</span></li>
-          <li><span class="text-sm" style="color:rgba(255,255,255,0.45);">Folha de Pagamento</span></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="text-xs uppercase tracking-wider font-semibold mb-4" style="color:rgba(255,255,255,0.5);">Empresa</h4>
-        <ul class="space-y-2.5">
-          <li><span class="text-sm" style="color:rgba(255,255,255,0.45);">Por que JB?</span></li>
-          <li><span class="text-sm" style="color:rgba(255,255,255,0.45);">Contato</span></li>
-          <li><a href="https://instagram.com/jbassessoria_contabil" target="_blank" rel="noopener" class="text-sm" style="color:rgba(255,255,255,0.45);">Instagram</a></li>
-          <li><a href="https://wa.me/5534988374643" target="_blank" rel="noopener" class="text-sm" style="color:rgba(255,255,255,0.45);">WhatsApp</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="text-xs uppercase tracking-wider font-semibold mb-4" style="color:rgba(255,255,255,0.5);">Contato</h4>
-        <ul class="space-y-2.5">
-          <li><span class="text-sm" style="color:rgba(255,255,255,0.45);">(34) 98837-4643</span></li>
-          <li><span class="text-sm" style="color:rgba(255,255,255,0.45);">jbcontabilidade23@gmail.com</span></li>
-          <li><span class="text-sm" style="color:rgba(255,255,255,0.45);">@jbassessoria_contabil</span></li>
-        </ul>
-      </div>
-    </div>
-    <div class="pt-8 text-center" style="border-top:1px solid rgba(255,255,255,0.1);">
-      <p class="text-xs" style="color:rgba(255,255,255,0.25);">© <span id="year"></span> JB Assessoria e Consultoria Contábil. Todos os direitos reservados.</p>
-    </div>
-  </div>
-</footer>
-
-<!-- ═══════════════════════════════════════════════════════════
-     FLOATING BUTTONS — Instagram, WhatsApp + Fale Conosco
-═══════════════════════════════════════════════════════════ -->
-<!-- Botão flutuante de Contato (aparece ao rolar) -->
-<button id="float-contact-btn" onclick="openModal()" aria-label="Fale Conosco">
-  <span id="float-contact-btn-tooltip">Fale Conosco</span>
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-  </svg>
-</button>
-
-<div class="fixed bottom-6 right-6 flex flex-col gap-3" style="z-index:50;">
-  <a href="https://instagram.com/jbassessoria_contabil" target="_blank" rel="noopener"
-     class="fab w-14 h-14 rounded-full flex items-center justify-center"
-     style="background:linear-gradient(135deg,#f09433,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888);box-shadow:0 8px 24px rgba(0,0,0,0.2);">
-    <svg width="28" height="28" fill="white" viewBox="0 0 24 24">
-      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-    </svg>
-  </a>
-  <a href="https://wa.me/5534988374643" target="_blank" rel="noopener"
-     class="fab w-14 h-14 rounded-full flex items-center justify-center"
-     style="background:#25D366;box-shadow:0 8px 24px rgba(37,211,102,0.35);">
-    <svg width="28" height="28" fill="white" viewBox="0 0 24 24">
-      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-      <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm.029 18.88a9.93 9.93 0 01-4.756-1.215L3 18.75l1.124-4.143A9.924 9.924 0 012.07 9.93C2.07 4.458 6.528 0 12 0s9.93 4.458 9.93 9.93c0 5.471-4.458 9.93-9.901 9.95z" fill-rule="evenodd" clip-rule="evenodd"/>
-    </svg>
-  </a>
-</div>
-
-<!-- ═══════════════════════════════════════════════════════════
-     JAVASCRIPT
-═══════════════════════════════════════════════════════════ -->
 <script>
-/* ─── Ano no rodapé ──────────────────────────────────────── */
-document.getElementById('year').textContent = new Date().getFullYear();
 
-/* ─── Navbar scroll ──────────────────────────────────────── */
-window.addEventListener('scroll', function () {
-  document.getElementById('navbar').style.boxShadow =
-    window.scrollY > 20 ? '0 4px 24px rgba(0,0,0,0.2)' : 'none';
+/* PERFORMANCE SCROLL */
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  document.getElementById('navbar').style.boxShadow = y > 20 ? '0 4px 20px rgba(0,0,0,0.3)' : 'none';
 });
 
-/* ─── Mobile nav ─────────────────────────────────────────── */
-function toggleMobile() {
-  var nav = document.getElementById('mobile-nav');
-  var ham = document.getElementById('ham-icon');
-  var xi  = document.getElementById('x-icon');
-  var open = nav.classList.toggle('open');
-  ham.classList.toggle('hidden', open);
-  xi.classList.toggle('hidden', !open);
-}
-function closeMobile() {
-  document.getElementById('mobile-nav').classList.remove('open');
-  document.getElementById('ham-icon').classList.remove('hidden');
-  document.getElementById('x-icon').classList.add('hidden');
+/* WHATSAPP */
+function openWhatsApp() {
+  window.open('https://wa.me/5534988374643', '_blank');
 }
 
-/* ─── Botão flutuante de contato (aparece ao rolar 400px) ── */
-var floatBtn = document.getElementById('float-contact-btn');
-window.addEventListener('scroll', function () {
-  if (window.scrollY > 400) {
-    floatBtn.classList.add('visible');
-  } else {
-    floatBtn.classList.remove('visible');
-  }
-});
+/* GOOGLE REVIEWS (SIMPLIFICADO) */
+const API_KEY = 'SUA_CHAVE';
+const PLACE_ID = 'SEU_PLACE_ID';
 
-/* ─── Modal de contato ────────────────────────────────────── */
-function openModal() {
-  document.getElementById('modal-overlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeModal() {
-  document.getElementById('modal-overlay').classList.remove('open');
-  document.body.style.overflow = '';
-  document.getElementById('modal-sent').classList.remove('visible');
-  document.getElementById('modal-sending').classList.remove('visible');
-  document.getElementById('modal-error').classList.add('hidden');
-  document.getElementById('modal-form-body').classList.remove('hidden');
-  ['f-nome','f-tel','f-email','f-msg'].forEach(function(id){ document.getElementById(id).value = ''; });
-}
-document.getElementById('modal-overlay').addEventListener('click', function (e) {
-  if (e.target === this) closeModal();
-});
-document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
-
-/* ─── Envio direto do formulário via Web3Forms ─────────────
-   CONFIGURAÇÃO:
-   1. Acesse https://web3forms.com e informe seu e-mail
-   2. Você receberá uma chave de acesso gratuita
-   3. Substitua "SUA_CHAVE_WEB3FORMS_AQUI" no campo hidden acima
-   Após configurado, o formulário envia direto para jbcontabilidade23@gmail.com
-   sem que o cliente precise abrir o próprio e-mail.
-───────────────────────────────────────────────────────────── */
-function submitContact(e) {
-  e.preventDefault();
-  var form = document.getElementById('modal-form-body');
-  document.getElementById('modal-form-body').classList.add('hidden');
-  document.getElementById('modal-sending').classList.add('visible');
-
-  var data = new FormData(form);
-
-  fetch('https://api.web3forms.com/submit', {
-    method: 'POST',
-    body: data
-  })
-  .then(function(res){ return res.json(); })
-  .then(function(json){
-    document.getElementById('modal-sending').classList.remove('visible');
-    if (json.success) {
-      document.getElementById('modal-sent').classList.add('visible');
-    } else {
-      document.getElementById('modal-error').classList.remove('hidden');
-    }
-  })
-  .catch(function(){
-    document.getElementById('modal-sending').classList.remove('visible');
-    document.getElementById('modal-error').classList.remove('hidden');
-  });
-}
-
-/* ─── Scroll reveal ──────────────────────────────────────── */
-var revealObs = new IntersectionObserver(function (entries) {
-  entries.forEach(function (entry) {
-    if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObs.unobserve(entry.target); }
-  });
-}, { threshold: 0.12 });
-document.querySelectorAll('.reveal').forEach(function (el) { revealObs.observe(el); });
-
-/* ═══════════════════════════════════════════════════════════
-   HERO CARD — efeito de tilt 3D interativo
-═══════════════════════════════════════════════════════════ */
-(function () {
-  var wrap = document.getElementById('hero-tilt-wrap');
-  if (!wrap) return;
-
-  wrap.addEventListener('mousemove', function (e) {
-    var rect = wrap.getBoundingClientRect();
-    var x = e.clientX - rect.left;
-    var y = e.clientY - rect.top;
-    var cx = rect.width / 2;
-    var cy = rect.height / 2;
-    var rotX = ((y - cy) / cy) * -7;
-    var rotY = ((x - cx) / cx) * 7;
-    wrap.style.transform = 'perspective(900px) rotateX(' + rotX + 'deg) rotateY(' + rotY + 'deg) scale(1.015)';
-  });
-
-  wrap.addEventListener('mouseleave', function () {
-    wrap.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg) scale(1)';
-  });
-})();
-
-/* ═══════════════════════════════════════════════════════════
-   GOOGLE REVIEWS — Places API
-   ─ Como configurar:
-     1. Acesse https://console.cloud.google.com
-     2. Crie um projeto e ative "Places API"
-     3. Gere uma chave de API
-     4. Encontre o Place ID da JB: abra maps.google.com,
-        busque "JB Contabilidade Araxá", clique no resultado
-        e copie o ID da URL (CIJ... ou ChIJ...)
-     5. Substitua os valores abaixo
-═══════════════════════════════════════════════════════════ */
-var GOOGLE_API_KEY  = 'SUA_CHAVE_API_GOOGLE_AQUI';
-var GOOGLE_PLACE_ID = 'SEU_PLACE_ID_AQUI';
-
-var _googleReviews = [];
-var _reviewIdx = 0;
-var _reviewTimer = null;
-
-window._initGooglePlaces = function () {
+async function loadReviews() {
   try {
-    var service = new google.maps.places.PlacesService(document.createElement('div'));
-    service.getDetails(
-      { placeId: GOOGLE_PLACE_ID, fields: ['reviews', 'rating', 'user_ratings_total'] },
-      function (place, status) {
-        if (status === google.maps.places.PlacesServiceStatus.OK && place.reviews && place.reviews.length) {
-          _googleReviews = place.reviews.filter(function(r){ return r.rating >= 4; });
-          _updateBadge(place.rating, place.user_ratings_total);
-          _startReviewTicker();
-        }
-      }
-    );
+    const res = await fetch(`https://maps.googleapis.com/maps/api/place/details/json?place_id=${PLACE_ID}&fields=reviews&key=${API_KEY}`);
+    const data = await res.json();
+    const reviews = data.result.reviews.slice(0,3);
+
+    const container = document.getElementById('reviews');
+    reviews.forEach(r => {
+      const div = document.createElement('div');
+      div.className = 'mb-4 opacity-80';
+      div.innerText = `"${r.text}" - ${r.author_name}`;
+      container.appendChild(div);
+    });
   } catch(e) {}
-};
-
-function _updateBadge(rating, total) {
-  var lbl = document.getElementById('badge-label');
-  if (lbl && rating) lbl.textContent = rating.toFixed(1) + ' ★ Google (' + total + ')';
 }
 
-function _startReviewTicker() {
-  if (!_googleReviews.length) return;
-  var ticker = document.getElementById('review-ticker');
-  ticker.style.display = 'block';
-  _showReview(0);
-  _reviewTimer = setInterval(function () {
-    _reviewIdx = (_reviewIdx + 1) % _googleReviews.length;
-    _showReview(_reviewIdx);
-  }, 5000);
-}
+loadReviews();
 
-function _showReview(idx) {
-  var r = _googleReviews[idx];
-  if (!r) return;
-  var stars = '';
-  for (var i = 0; i < r.rating; i++) stars += '★';
-  var text = r.text.length > 90 ? r.text.substring(0, 90) + '…' : r.text;
-  document.getElementById('review-rating').textContent = stars;
-  document.getElementById('review-total').textContent = 'Google';
-  document.getElementById('review-text').textContent = '"' + text + '"';
-  document.getElementById('review-author').textContent = '— ' + r.author_name;
-
-  // Update avatar initials in badge
-  var initials = r.author_name.split(' ').map(function(w){return w[0];}).slice(0,1).join('');
-  var av = document.getElementById('badge-av' + ((idx % 3) + 1));
-  if (av) av.textContent = initials;
-}
-
-// Carrega a API do Google Maps apenas se a chave foi configurada
-if (GOOGLE_API_KEY !== 'SUA_CHAVE_API_GOOGLE_AQUI' && GOOGLE_PLACE_ID !== 'SEU_PLACE_ID_AQUI') {
-  var gScript = document.createElement('script');
-  gScript.src = 'https://maps.googleapis.com/maps/api/js?key=' + GOOGLE_API_KEY + '&libraries=places&callback=_initGooglePlaces';
-  gScript.async = true;
-  document.head.appendChild(gScript);
-}
-
-/* ═══════════════════════════════════════════════════════════
-   CHAT INTERATIVO — responde imediatamente (FAQ contábil)
-═══════════════════════════════════════════════════════════ */
-var FAQ = [
-  {
-    keywords: ['regime', 'tributario', 'tributário', 'melhor regime', 'qual regime', 'tributação', 'tributacao', 'regime fiscal'],
-    answer: 'A escolha do regime tributário depende do seu faturamento anual e da atividade exercida. <strong>MEI</strong> (até R$81k/ano), <strong>Simples Nacional</strong> (até R$4,8M), <strong>Lucro Presumido</strong> ou <strong>Lucro Real</strong> para faturamentos maiores. Cada caso é único — fale com a JB para uma simulação gratuita e personalizada!'
-  },
-  {
-    keywords: ['simples nacional', 'simples', 'entrar no simples', 'mudar simples', 'migrar simples', 'aderir simples'],
-    answer: 'Para aderir ao <strong>Simples Nacional</strong>, sua empresa precisa ter faturamento de até <strong>R$4,8M/ano</strong>, estar sem débitos federais, estaduais e municipais, e exercer atividade permitida. A adesão ocorre em <strong>janeiro de cada ano</strong>. A JB cuida de todo o processo para você!'
-  },
-  {
-    keywords: ['mei', 'microempreendedor', 'micro empreendedor', 'microempreendedora', 'individual'],
-    answer: 'O <strong>MEI</strong> é ideal para quem fatura até <strong>R$81.000/ano</strong>. Vantagens: CNPJ gratuito, acesso a crédito bancário, previdência social e emissão de notas fiscais. Taxa mensal: R$71 (comércio/indústria) ou R$75 (serviços). A JB abre e mantém seu MEI em dia!'
-  },
-  {
-    keywords: ['imposto', 'impostos', 'pago muito', 'pago tantos', 'tributo', 'reduzir imposto', 'economizar', 'carga tributaria', 'carga tributária'],
-    answer: 'Os impostos variam conforme o regime. No <strong>Simples Nacional</strong>, uma guia (DAS) unifica vários tributos. No <strong>Lucro Presumido</strong>: IRPJ, CSLL, PIS, COFINS, ISS ou ICMS separadamente. Um bom planejamento tributário pode reduzir significativamente sua carga de forma legal. A JB faz essa análise!'
-  },
-  {
-    keywords: ['declarar', 'declaração', 'irpf', 'imposto de renda', 'pessoa fisica', 'pessoa física', 'ir anual', 'declarar ir'],
-    answer: 'Você deve declarar o <strong>IRPF</strong> se em 2024 teve: rendimentos tributáveis acima de <strong>R$30.639,90</strong>, rendimentos isentos acima de R$200k, realizou operações na bolsa de valores, ou possui bens e direitos acima de R$800k. A JB prepara sua declaração com segurança!'
-  },
-  {
-    keywords: ['abrir empresa', 'abertura', 'abrir cnpj', 'registrar empresa', 'constituir empresa', 'nova empresa', 'como abrir'],
-    answer: 'Para abrir uma empresa você precisa definir: <strong>tipo societário</strong> (LTDA, SLU, SA), <strong>atividade (CNAE)</strong> e <strong>regime tributário</strong>. O registro ocorre na Junta Comercial e Receita Federal e leva de <strong>3 a 15 dias úteis</strong>. A JB orienta cada etapa e garante que tudo saia certo!'
-  },
-  {
-    keywords: ['folha', 'funcionario', 'funcionário', 'empregado', 'clt', 'salario', 'salário', 'rescisão', 'rescisao', 'ferias', 'férias', '13 salario', 'decimo'],
-    answer: 'A <strong>Folha de Pagamento</strong> inclui: salários, <strong>FGTS</strong> (8%), descontos de INSS do empregado, IRRF, décimo terceiro e férias com 1/3 adicional. Erros geram multas e passivos trabalhistas. A JB gerencia sua folha com precisão e dentro dos prazos legais!'
-  },
-  {
-    keywords: ['nota fiscal', 'nota', 'emitir nota', 'nfe', 'nf-e', 'nfse', 'nfs-e', 'nota de servico', 'nota de serviço'],
-    answer: 'A emissão de notas fiscais depende da sua atividade: <strong>NF-e</strong> para comércio e indústria, <strong>NFS-e</strong> para serviços (emitida pela prefeitura). MEIs têm regras específicas por município. Emitir corretamente evita multas e garante seus créditos. A JB configura e orienta a emissão!'
-  },
-  {
-    keywords: ['pro labore', 'prolabore', 'pró-labore', 'distribuicao', 'distribuição', 'lucro', 'retirada de socio', 'retirada de sócio'],
-    answer: 'O <strong>pró-labore</strong> (remuneração pelo trabalho dos sócios) tem incidência de INSS e IR. Já a <strong>distribuição de lucros</strong> é geralmente isenta de IR e sem INSS. Equilibrar os dois pode gerar economia fiscal relevante. A JB estrutura isso da melhor forma para a sua empresa!'
-  },
-  {
-    keywords: ['inss', 'previdencia', 'previdência', 'contribuição previdenciaria', 'contribuição previdenciária', 'aposentadoria', 'beneficio', 'benefício'],
-    answer: 'O <strong>INSS patronal</strong> varia: 20% sobre a folha no Lucro Real/Presumido, já incluso no DAS do Simples Nacional. Além disso, o <strong>FGTS</strong> (8%) deve ser recolhido mensalmente. O correto cumprimento evita autuações fiscais. A JB monitora todos os recolhimentos!'
-  },
-  {
-    keywords: ['sped', 'dctf', 'ecf', 'ecd', 'defis', 'obrigações', 'obrigacoes', 'declarações', 'declaracoes', 'prazo', 'entrega', 'acessória', 'acessoria'],
-    answer: 'As principais <strong>obrigações acessórias</strong>: <strong>DCTF</strong> (mensal), <strong>SPED</strong> (escrituração digital), <strong>ECF/ECD</strong> (Lucro Real/Presumido), <strong>DEFIS</strong> (Simples Nacional, anual). Os prazos variam, e o atraso gera multas. A JB garante que nenhuma entrega seja perdida!'
-  },
-  {
-    keywords: ['contabilidade', 'contador', 'escrituracao', 'escrituração', 'balanco', 'balanço', 'dre', 'demonstrativo', 'demonstracao', 'demonstração'],
-    answer: 'A <strong>contabilidade</strong> registra todas as movimentações da empresa, gera <strong>Balanço Patrimonial</strong>, <strong>DRE</strong> e demais demonstrações financeiras — obrigatórias para todas as empresas. Um contador também é essencial para planejamento tributário e tomada de decisão. Na JB, você tem um time completo!'
-  }
-];
-
-var DEFAULT_ANSWER = 'Essa é uma ótima dúvida! Para uma resposta personalizada à sua situação específica, nossos especialistas estão prontos para te atender. Clique abaixo para falar diretamente! 😊';
-
-function getFaqAnswer(q) {
-  var lower = q.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-  for (var i = 0; i < FAQ.length; i++) {
-    for (var j = 0; j < FAQ[i].keywords.length; j++) {
-      var kw = FAQ[i].keywords[j].toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-      if (lower.indexOf(kw) !== -1) return FAQ[i].answer;
-    }
-  }
-  return DEFAULT_ANSWER;
-}
-
-function chatFilterSuggestions(val) {
-  var pills = document.querySelectorAll('.suggestion-pill');
-  var lower = val.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-  var hasFilter = val.trim().length > 1;
-  pills.forEach(function (p) {
-    if (!hasFilter) {
-      p.classList.remove('hidden-pill');
-    } else {
-      var txt = p.dataset.text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-      p.classList.toggle('hidden-pill', txt.indexOf(lower) === -1);
-    }
+/* CHAT IA (OPENAI) */
+async function sendMessage(msg) {
+  const res = await fetch('https://api.openai.com/v1/chat/completions', {
+    method:'POST',
+    headers:{
+      'Content-Type':'application/json',
+      'Authorization':'Bearer SUA_API_OPENAI'
+    },
+    body:JSON.stringify({
+      model:'gpt-4o-mini',
+      messages:[{role:'user',content:msg}]
+    })
   });
+
+  const data = await res.json();
+  return data.choices[0].message.content;
 }
 
-function chatSuggestionClick(btn) {
-  var q = btn.dataset.text;
-  document.getElementById('chat-input').value = q;
-  chatFilterSuggestions(q);
-  chatSubmit();
-}
+const input = document.getElementById('chat-input');
+input.addEventListener('keydown', async (e) => {
+  if (e.key === 'Enter') {
+    const msg = input.value;
+    input.value = '';
 
-function chatSubmit() {
-  var input = document.getElementById('chat-input');
-  var q = input.value.trim();
-  if (!q) return;
-  input.value = '';
-  chatFilterSuggestions('');
+    const box = document.getElementById('chat-box');
 
-  var msgs = document.getElementById('chat-messages');
-  msgs.classList.add('active');
+    const user = document.createElement('div');
+    user.textContent = msg;
+    user.className = 'bg-blue-500 p-2 rounded';
+    box.appendChild(user);
 
-  // Hide suggestions when conversation starts
-  var suggestWrap = document.getElementById('chat-suggestions-wrap');
-  suggestWrap.style.display = 'none';
+    const bot = document.createElement('div');
+    bot.textContent = 'Digitando...';
+    bot.className = 'bg-gray-700 p-2 rounded';
+    box.appendChild(bot);
 
-  // User bubble
-  var userBubble = document.createElement('div');
-  userBubble.className = 'bubble-user';
-  userBubble.textContent = q;
-  msgs.appendChild(userBubble);
-  msgs.scrollTop = msgs.scrollHeight;
+    const reply = await sendMessage(msg);
+    bot.textContent = reply;
+  }
+});
 
-  // Typing indicator
-  var typing = document.createElement('div');
-  typing.className = 'typing-wrap';
-  typing.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
-  msgs.appendChild(typing);
-  msgs.scrollTop = msgs.scrollHeight;
-
-  // Answer after 700ms
-  setTimeout(function () {
-    msgs.removeChild(typing);
-    var answer = getFaqAnswer(q);
-    var botBubble = document.createElement('div');
-    botBubble.className = 'bubble-bot';
-    botBubble.innerHTML = answer +
-      '<br><a href="https://wa.me/5534988374643?text=' + encodeURIComponent(q) +
-      '" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-size:12px;color:#2a9d8f;text-decoration:none;">' +
-      '<svg width="13" height="13" fill="#2a9d8f" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm.029 18.88a9.93 9.93 0 01-4.756-1.215L3 18.75l1.124-4.143A9.924 9.924 0 012.07 9.93C2.07 4.458 6.528 0 12 0s9.93 4.458 9.93 9.93c0 5.471-4.458 9.93-9.901 9.95z" fill-rule="evenodd" clip-rule="evenodd"/></svg>' +
-      'Falar com especialista no WhatsApp</a>';
-    msgs.appendChild(botBubble);
-    msgs.scrollTop = msgs.scrollHeight;
-  }, 700);
-}
 </script>
 
 </body>
